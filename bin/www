@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var debug = require('debug')('new-bento:server');
+const debug = require('debug')('new-bento:server');
 const http = require('http');
 const app = require('../app');
 
