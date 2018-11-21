@@ -22,7 +22,7 @@ function authenticate() {
 // perform a basic search with a given term
 function searchTerm(token, term) {
   const options = {
-    url: 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=10',
+    url: 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3',
     headers: {
       Authorization: `Bearer ${token}`,
 

@@ -14,7 +14,6 @@ function getInformation(issn) {
 
   return new Promise((resolve, reject) => {
     request.get(options, (err, res, body) => {
-      console.log('body ' + body);
       if (err) reject(err);
       else resolve(JSON.parse(body).data);
     });
