@@ -70,9 +70,12 @@ function getBibRecord(token, id) {
       // we only want the issn (within subfields)
       else {
         const filteredObjs = JSON.parse(body).fields.filter(obj => Object.keys(obj)[0] === '022');
+        const filteredObjsTitle = JSON.parse(body).fields.filter(obj => Object.keys(obj)[0] === '245');
         const issn = filteredObjs.length ? filteredObjs[0]['022'].subfields[0].a.replace(/-/g, '') : null;
+        const title = filteredObjsTitle.length ? filteredObjsTitle[0]['245'].subfields[0].a : null;
         const obj = {};
         obj[id] = issn;
+        obj.title = title;
         resolve(obj);
       }
     });

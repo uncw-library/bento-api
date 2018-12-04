@@ -3,7 +3,7 @@ const request = require('request');
 const keys = require('../keys');
 
 // get information about the journal titles
-function getInformation(issn) {
+function getInformation(issn, title, recordNum) {
   const options = {
     url: `https://public-api.thirdiron.com/public/v1/libraries/1552/search?issns=${issn}`,
     headers: {
@@ -15,7 +15,7 @@ function getInformation(issn) {
   return new Promise((resolve, reject) => {
     request.get(options, (err, res, body) => {
       if (err) reject(err);
-      else resolve(JSON.parse(body).data);
+      else resolve({ browzine: JSON.parse(body).data, title, link: `http://libcat.uncw.edu/record=b${recordNum}~S4` });
     });
   });
 }

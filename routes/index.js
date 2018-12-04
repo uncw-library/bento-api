@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 /* POST to /search */
-router.post('/search', async (req, res) => {
+router.post('/journals', async (req, res) => {
   const token = JSON.parse(await sierraApi.authenticate()).access_token;
   const bibLinks = (await sierraApi.searchTerm(token, req.body.searchTerm));
   const ids = [];
@@ -32,7 +32,8 @@ router.post('/search', async (req, res) => {
   });
 
   (await Promise.all(bibRecords)).forEach((record) => {
-    const browzineRecord = browzineApi.getInformation(record[Object.keys(record)[0]]);
+    const recordNum = Object.keys(record)[0];
+    const browzineRecord = browzineApi.getInformation(record[recordNum], record.title, recordNum);
     browzineRecords.push(browzineRecord);
   });
 
