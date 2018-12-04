@@ -1,7 +1,7 @@
 version: '2'
 services:
   bento:
-    image: libapps-admin.uncw.edu:8000/randall-dev/bento
+    image: libapps-admin.uncw.edu:8000/randall-dev/new-bento
     restart: always
     environment:
       SIERRA_API_KEY: ChangeMe!
