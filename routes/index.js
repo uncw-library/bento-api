@@ -5,6 +5,7 @@
 const express = require('express');
 const journalController = require('../controllers/journals');
 const bookEbookController = require('../controllers/booksEbooks.js');
+const contentDMController = require('../controllers/digitalCollections.js');
 
 const router = express.Router();
 
@@ -25,5 +26,11 @@ router.post('/journals', async (req, res) => {
 router.post('/books-ebooks', async (req, res) => {
   /* return book and ebook results from a search term (from sierra) */
   res.json(await bookEbookController.getBooksAndEbooks(req.body.searchTerm));
+});
+
+/* POST to /books-ebooks */
+router.post('/contentdm', async (req, res) => {
+  /* return book and ebook results from a search term (from sierra) */
+  res.json(await contentDMController.getDigitalCollections(req.body.searchTerm));
 });
 module.exports = router;
