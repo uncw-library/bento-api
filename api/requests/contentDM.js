@@ -4,7 +4,7 @@ const request = require('request');
 function getDigitalCollections(searchTerm) {
   let url = 'https://digitalcollections.uncw.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/';
   searchTerm.split(' ').forEach((term) => { url += `CISOSEARCHALL^${term}^exact^and!`; });
-  url += '/title!descri!creato!identi!subjec/nosort/10/1/1/0/0/0/json';
+  url += '/title!descri!creato!identi!subjec/nosort/5/1/1/0/0/0/json';
 
   console.log(url);
 
