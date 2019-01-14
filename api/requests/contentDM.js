@@ -6,8 +6,6 @@ function getDigitalCollections(searchTerm) {
   searchTerm.split(' ').forEach((term) => { url += `CISOSEARCHALL^${term}^exact^and!`; });
   url += '/title!descri!creato!identi!subjec/nosort/5/1/1/0/0/0/json';
 
-  console.log(url);
-
   const options = {
     url,
     headers: {
@@ -16,7 +14,6 @@ function getDigitalCollections(searchTerm) {
   };
 
   return new Promise((resolve, reject) => {
-    console.log(options);
     request.get(options, (err, res, body) => {
       if (err) reject(err);
       else resolve({ collections: JSON.parse(body) });
