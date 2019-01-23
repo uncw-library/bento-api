@@ -15,7 +15,7 @@ function getInformation(issn, title, recordNum) {
   return new Promise((resolve, reject) => {
     request.get(options, (err, res, body) => {
       if (err) reject(err);
-      else resolve({ browzine: JSON.parse(body).data, title, link: `http://libcat.uncw.edu/record=b${recordNum}~S4` });
+      else resolve({ browzine: JSON.parse(body).data, title, link: `http://libcat.uncw.edu/record=b${recordNum}~S4`, issn });
     });
   });
 }
