@@ -3,7 +3,7 @@ const browzineApi = require('../api/requests/browzine');
 
 async function getJournals(searchTerm) {
   const token = JSON.parse(await sierraApi.authenticate()).access_token;
-  const bibLinks = (await sierraApi.searchTerm(token, searchTerm));
+  const bibLinks = (await sierraApi.searchJournals(token, searchTerm));
   const ids = [];
   const bibRecords = [];
   const browzineRecords = [];

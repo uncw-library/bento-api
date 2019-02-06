@@ -19,8 +19,8 @@ function authenticate() {
   });
 }
 
-// perform a basic search with a given term
-function searchTerm(token, term) {
+// perform a basic journal search with a given term
+function searchJournals(token, term) {
   const options = {
     url: 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3',
     headers: {
@@ -50,6 +50,24 @@ function searchTerm(token, term) {
     request.post(options, (err, res, body) => {
       if (err) reject(err);
       else resolve(body);
+    });
+  });
+}
+
+// perform a basic book/ebook search with a given term
+function searchBooksEbooks(token, term) {
+  const options = {
+    url: `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json',
+    },
+  };
+
+  return new Promise((resolve, reject) => {
+    request.get(options, (err, res, body) => {
+      if (err) reject(err);
+      else resolve(JSON.parse(body));
     });
   });
 }
@@ -84,6 +102,7 @@ function getBibRecord(token, id) {
 
 module.exports = {
   authenticate,
-  searchTerm,
+  searchJournals,
+  searchBooksEbooks,
   getBibRecord,
 };

@@ -30,7 +30,7 @@ router.post('/books-ebooks', async (req, res) => {
 
 /* POST to /books-ebooks */
 router.post('/contentdm', async (req, res) => {
-  /* return book and ebook results from a search term (from sierra) */
+  /* return contentdm results from a searchTerm */
   res.json(await contentDMController.getDigitalCollections(req.body.searchTerm));
 });
 module.exports = router;
