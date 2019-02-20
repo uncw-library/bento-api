@@ -15,8 +15,15 @@ function getDigitalCollections(searchTerm) {
 
   return new Promise((resolve, reject) => {
     request.get(options, (err, res, body) => {
-      if (err) reject(err);
-      else resolve({ collections: JSON.parse(body) });
+      try {
+        if (err) reject(err);
+        else resolve({ collections: JSON.parse(body) });
+      } catch (err) {
+        console.log('Err with CDM body:');
+        console.log(body)
+        console.log(err);
+        resolve({ collections: [] });
+      }
     });
   });
 }
