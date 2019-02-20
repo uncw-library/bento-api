@@ -28,22 +28,42 @@ function searchJournals(token, term) {
 
     },
     json: {
-      target: {
-        record: {
-          type: 'bib',
+      queries: [
+        {
+          target: {
+            record: {
+              type: "bib"
+            },
+            id: 31
+          },
+          expr: {
+            op: "equals",
+            operands: [
+              "-",
+              ""
+            ]
+          }
         },
-        field: {
-          tag: 'j',
-        },
-      },
-      expr: {
-        op: 'starts_with',
-        operands: [
-          String(term),
-          '',
-        ],
-      },
-    },
+        "and",
+        {
+          target: {
+            record: {
+              type: "bib"
+            },
+            field: {
+              tag: "j"
+            }
+          },
+          expr: {
+            op: "starts_with",
+            operands: [
+              String(term),
+              ""
+            ]
+          }
+        }
+      ]
+    }
   };
 
   return new Promise((resolve, reject) => {
