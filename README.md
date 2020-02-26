@@ -1,9 +1,16 @@
 
-## New Bento
+## New Bento API server
 
-Builds an API server at https://new-bento.libapps.uncw.edu/ used by https://library.uncw.edu/search_randall/ .
+Builds an API server at https://new-bento.libapps.uncw.edu/ used by https://library.uncw.edu/search_randall/
 
-Queries sierra, contentDM and browzine for items matching the search term.  Returns a JSON of matches.
+Accepts POST requests with payload of `{"searchTerm": "{{ some_string }}"}` at:
+ - https://library.uncw.edu/search_randall/journals
+ - https://library.uncw.edu/search_randall/books_ebooks
+ - https://library.uncw.edu/search_randall/contentdm
+
+Queries sierra, contentDM and browzine for items matching the search term.
+
+Returns a JSON of matches.
 
 Example:
 
@@ -18,7 +25,7 @@ Example:
   - or
 
     - `docker build -t {{ some_name }} .`
-    - `docker run -p {{ some port }}:3000`
+    - `docker run -p {{ some_port }}:3000`
 
 
   - `curl "http://localhost:8010/"`  # this works
