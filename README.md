@@ -28,6 +28,14 @@ It returns a JSON of matches.
 > BROWZINE_API_KEY=Password
 >
 
+  - The actual Passwords can be found in the Rancher web interface:
+
+    - External tab in titlebar
+    - new-bento item in User Stacks
+    - bento item in Stack
+    - new-bento-bento-1 in the "Container" tab
+    - Environment row in the "Command" tab
+
 #### Starting it
 
 ```
