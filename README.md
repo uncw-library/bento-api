@@ -39,7 +39,7 @@ docker-compose up --build
 
 ```
 curl "http://localhost:8010/"
-curl --data "searchTerm=hi" "http://localhost:8010/"
+curl --data "searchTerm=hi" "http://localhost:8010/journals"
 ```
 ### To build a prod box
 
