@@ -19,8 +19,11 @@ WORKDIR /usr/src/
 COPY package.json .
 RUN npm install
 
-# Bundle app source
-COPY . .
+# Bundle app source, setting user:group & file permissions
+COPY --chown=node:node . .
+RUN find . -type d -exec chmod 755 {} \; \
+	& find . -type f -exec chmod 644 {} \;
+
 
 # Listen on port 3000
 EXPOSE 3000
