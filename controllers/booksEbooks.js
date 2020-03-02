@@ -43,11 +43,6 @@ async function getBooksAndEbooks(searchTerm) {
     }
   });*/
 
-  console.log('VIDEOS -----------------------');
-  console.log(videos)
-  console.log('EBOOKS BOOKS ------------------')
-  console.log(booksEbooks)
-
   return bibs;
 
   /*bibLinks.entries.forEach(entry => ids.push(entry.link.match(/[^/]+$/g)[0]));
