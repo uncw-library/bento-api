@@ -23,44 +23,12 @@ function authenticate() {
 function searchJournals(token, term) {
   const options = {
     url: 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3',
-    headers: {
-      Authorization: `Bearer ${token}`,
-
-    },
+    headers: {Authorization: `Bearer ${token}`, },
     json: {
-      queries: [
-        {
-          target: {
-            record: {
-              type: "bib"
-            },
-            id: 31
-          },
-          expr: {
-            op: "equals",
-            operands: [
-              "-",
-              ""
-            ]
-          }
-        },
-        "and",
-        {
-          target: {
-            record: {
-              type: "bib"
-            },
-            field: {
-              tag: "j"
-            }
-          },
-          expr: {
-            op: "starts_with",
-            operands: [
-              String(term),
-              ""
-            ]
-          }
+      queries: [{
+        target: {record: {type: "bib"}, id: 31}, expr: {op: "equals", operands: ["-", ""]}
+        }, "and", {
+        target: {record: {type: "bib"}, field: {tag: "j"}}, expr: {op: "starts_with", operands: [String(term), ""]}
         }
       ]
     }
@@ -106,11 +74,21 @@ function getBibRecord(token, id) {
     request.get(options, (err, res, body) => {
       if (err) reject(err);
       // we only want the issn (within subfields)
+      // each body is an item's marc record, in json format.
       else {
         const filteredObjs = JSON.parse(body).fields.filter(obj => Object.keys(obj)[0] === '022');
         const filteredObjsTitle = JSON.parse(body).fields.filter(obj => Object.keys(obj)[0] === '245');
-        const issn = filteredObjs.length ? filteredObjs[0]['022'].subfields[0].a.replace(/-/g, '') : null;
-        const title = filteredObjsTitle.length ? filteredObjsTitle[0]['245'].subfields[0].a : null;
+        var issn, title;
+        try {
+          issn = filteredObjs[0]['022'].subfields[0].a.replace(/-/g, '');
+        } catch(e) {
+          issn = null;
+        };
+        try {
+          title = filteredObjsTitle[0]['245'].subfields[0].a;
+        } catch(e) {
+          title = null;
+        }
         const obj = {};
         obj[id] = issn;
         obj.title = title;
