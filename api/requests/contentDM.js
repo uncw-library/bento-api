@@ -26,4 +26,4 @@ function getDigitalCollections (searchTerm) {
   })
 }
 
-module.exports = getDigitalCollections
+module.exports.getDigitalCollections = getDigitalCollections

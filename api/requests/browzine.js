@@ -20,4 +20,4 @@ function getInformation (issn, title, recordNum) {
   })
 }
 
-module.exports = getInformation
+module.exports.getInformation = getInformation

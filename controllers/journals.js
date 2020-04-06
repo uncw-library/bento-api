@@ -25,4 +25,4 @@ async function getJournals (searchTerm) {
   return response
 }
 
-module.exports = getJournals
+module.exports.getJournals = getJournals

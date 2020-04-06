@@ -10,4 +10,4 @@ async function getDigitalCollections (searchTerm) {
   return collections
 }
 
-module.exports = getDigitalCollections
+module.exports.getDigitalCollections = getDigitalCollections

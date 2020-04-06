@@ -56,4 +56,4 @@ async function getBooksAndEbooks (searchTerm) {
   */
 }
 
-module.exports = getBooksAndEbooks
+module.exports.getBooksAndEbooks = getBooksAndEbooks
