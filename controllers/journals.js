@@ -11,7 +11,8 @@ async function getJournals (searchTerm) {
   bibLinks.entries.forEach(entry => ids.push(entry.link.match(/[^/]+$/g)[0]))
 
   ids.forEach((id) => {
-    const bibRecord = (sierraApi.getBibRecord(token, id))
+    const bibRecord = `{'1074149': null, title: 'Higher education opportunities for minorities and women, annotated selections'}`
+    // const bibRecord = (sierraApi.getBibRecord(token, id))
     bibRecords.push(bibRecord)
   });
 

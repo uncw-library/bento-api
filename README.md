@@ -19,6 +19,10 @@ It returns a JSON of matches.
   
 `curl --data "searchTerm=hi" "https://new-bento.libapps.uncw.edu/journals"`
 
+or
+
+`curl --data "searchTerm=hi" "http://localhost:8010/journals"`
+
 ### To build a dev box
 
   - Make a file at "new-bento/.env" with contents:
