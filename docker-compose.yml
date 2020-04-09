@@ -2,8 +2,15 @@ version: '3.7'
 services:
   bento:
     build: .
-    container_name: new-bento
+    container_name: bento
     ports:
       - "8010:3000"
     env_file: .env
+    # volumes:
+    #   - ./app/:/usr/src/app/
+    environment:
+      NODE_ENV: production
+    # command: npm start
+    # command: npm test
+    command: npm run dev
     restart: always
