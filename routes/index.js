@@ -5,7 +5,7 @@
 const express = require('express')
 const journalController = require('../controllers/journals')
 const bookEbookController = require('../controllers/booksEbooks.js')
-const contentDMController = require('../controllers/digitalCollections.js')
+const cDM = require('../controllers/cDM.js')
 
 const router = express.Router()
 
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 /* POST to /journals */
 router.post('/journals', async (req, res) => {
   /* return journal results from a search term (includes browzine) */
-  res.json(await journalController.getJournals(req.body.searchTerm))
+  res.json(await journalController.search(req.body.searchTerm))
 })
 
 /* POST to /books-ebooks */
@@ -29,7 +29,7 @@ router.post('/books-ebooks', async (req, res) => {
 /* POST to /books-ebooks */
 router.post('/contentdm', async (req, res) => {
   /* return contentdm results from a searchTerm */
-  res.json(await contentDMController.getDigitalCollections(req.body.searchTerm))
+  res.json(await cDM.search(req.body.searchTerm))
 })
 
 module.exports = router
