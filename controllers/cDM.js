@@ -5,6 +5,7 @@ function search (searchTerm) {
   const url = makeURL(searchTerm)
   return axios.get(url)
     .then(res => enrich(res))
+    .catch(error => console.log(error))
 }
 
 function makeURL (searchTerm) {

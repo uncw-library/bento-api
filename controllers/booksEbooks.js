@@ -1,7 +1,7 @@
 const sierraApi = require('../api/requests/sierra')
 
-async function getBooksAndEbooks (searchTerm) {
-  const token = JSON.parse(await sierraApi.authenticate()).access_token
+async function search (searchTerm) {
+  const token = (await sierraApi.authenticate())
   const bibs = (await sierraApi.searchBooksEbooks(token, searchTerm))
   // const ids = []
   // const bibRecords = []
@@ -56,4 +56,7 @@ async function getBooksAndEbooks (searchTerm) {
   */
 }
 
-module.exports.getBooksAndEbooks = getBooksAndEbooks
+module.exports.search = search
+
+// enpoint expect data like:
+// ** no endpoint yet specified **

@@ -17,3 +17,34 @@ async function search (searchTerm) {
 }
 
 module.exports.search = search
+
+// enpoint expect data like:
+// [
+// {
+//   "browzine": [],
+//   "title": "Highway and road mileage /",
+//   "link": "http://libcat.uncw.edu/record=bid~S4",
+//   "issn": null
+// },
+// {
+//   "browzine": [
+//   {
+//     "id": 149397,
+//     "type": "journals",
+//     "title": "Historic documents",
+//     "issn": "0892080X",
+//     "sjrValue": 0,
+//     "coverImageUrl": "https://assets.thirdiron.com/default-journal-cover.png",
+//     "browzineEnabled": false,
+//     "externalLink": "http://libcat.uncw.edu/search~S1/?searchtype=X&searcharg=0892-080X&SORT=D&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=l{journal_issn}"
+//   }],
+//   "title": "Historic documents",
+//   "link": "http://libcat.uncw.edu/record=bid~S4",
+//   "issn": "0892080X"
+// },
+// {
+//   "browzine": [],
+//   "title": "Higher education opportunities for minorities and women, annotated selections",
+//   "link": "http://libcat.uncw.edu/record=bid~S4",
+//   "issn": null
+// }]
