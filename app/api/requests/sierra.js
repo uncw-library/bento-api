@@ -5,7 +5,7 @@ const keys = require('../keys')
 helper functions
 */
 
-function getLastItem(array) {
+function getLastItem (array) {
   // was: return array.map(i => i.link.match(/[^/]+$/g)[0]))
   return array.map(i => i.link.split('/')[i.link.split('/').length - 1])
 }
@@ -39,7 +39,7 @@ exported functions
 function authenticate () {
   const url = 'https://libcat.uncw.edu/iii/sierra-api/v5/token'
   const data = {}
-  const headers = { headers: {'Authorization': `Basic ${keys.sierra}` }}
+  const headers = { headers: { Authorization: `Basic ${keys.sierra}` } }
 
   return axios.post(url, data, headers)
     .then(res => res.data.access_token)
@@ -51,11 +51,11 @@ function searchJournals (token, term) {
   const data = {
     queries: [{
       target: { record: { type: 'bib' }, id: 31 }, expr: { op: 'equals', operands: ['-', ''] }
-      }, 'and', {
+    }, 'and', {
       target: { record: { type: 'bib' }, field: { tag: 'j' } }, expr: { op: 'starts_with', operands: [`${term}`, ''] }
     }]
   }
-  const headers = { headers: {'Authorization': `Bearer ${token}` }}
+  const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   return axios.post(url, data, headers)
     .then(res => getLastItem(res.data.entries))
@@ -64,7 +64,7 @@ function searchJournals (token, term) {
 
 function getBibRecord (token, id) {
   const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/${id}/marc`
-  const headers = { headers: {'Authorization': `Bearer ${token}`, 'Accept': 'application/marc-in-json'}}
+  const headers = { headers: { Authorization: `Bearer ${token}`, Accept: 'application/marc-in-json' } }
 
   return axios.get(url, headers)
     .then(res => parseBib(res))
@@ -73,7 +73,7 @@ function getBibRecord (token, id) {
 
 function searchBooksEbooks (token, term) {
   const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`
-  const headers = { headers: {'Authorization': `Bearer ${token}` }}
+  const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   return axios.get(url, headers)
     .then(res => res.data)

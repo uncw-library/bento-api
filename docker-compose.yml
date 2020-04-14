@@ -6,8 +6,8 @@ services:
     ports:
       - "8010:3000"
     env_file: .env
-    # volumes:
-    #   - ./app/:/usr/src/app/
+    volumes:
+      - ./app/:/usr/src/app/
     environment:
       NODE_ENV: production
     # command: npm start

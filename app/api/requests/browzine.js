@@ -3,13 +3,15 @@ const keys = require('../keys')
 
 function search (issn, title, recordNum) {
   const url = `https://public-api.thirdiron.com/public/v1/libraries/1552/search?issns=${issn}`
-  const headers = { headers: {'Authorization': `Bearer ${keys.browzine}` }}
+  const headers = { headers: { Authorization: `Bearer ${keys.browzine}` } }
 
   return axios.get(url, headers)
-    .then(res => ({ 
+    .then(res => ({
       browzine: res.data.data,
       title,
-      link: `http://libcat.uncw.edu/record=b${recordNum}~S4`, issn }
+      link: `http://libcat.uncw.edu/record=b${recordNum}~S4`,
+      issn
+    }
     ))
     .catch(error => console.log(error))
 }
