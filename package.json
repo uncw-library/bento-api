@@ -9,16 +9,14 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "marko": "^4.13.9",
-    "morgan": "~1.9.0"
+    "debug": "^2.6.9",
+    "express": "^4.17.1",
+    "marko": "^4.20.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
@@ -26,6 +24,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^25.2.7",
     "nodemon": "^2.0.2",
+    "rewire": "^5.0.0",
     "supertest": "^4.0.2"
   }
 }
