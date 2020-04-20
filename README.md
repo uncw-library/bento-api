@@ -1,7 +1,7 @@
 
 ## New Bento API server
 
-This repo builds an API server at https://new-bento.libapps.uncw.edu/ used by https://library.uncw.edu/search_randall/
+Thiss repo builds an API server at https://new-bento.libapps.uncw.edu/ used by https://library.uncw.edu/search_randall/
 
 The app accepts POST requests with a searchTerm at:
 
