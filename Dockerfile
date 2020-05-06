@@ -15,8 +15,8 @@ RUN npm install
 
 COPY --chown=node:node app/ ./app
 WORKDIR /usr/src/app/
-RUN find . -type d -exec chmod 755 {} \; \
-	& find . -type f -exec chmod 644 {} \;
+# RUN find . -type d -exec chmod 755 {} \; \
+# 	& find . -type f -exec chmod 644 {} \;
 
 EXPOSE 3000
 CMD npm start
