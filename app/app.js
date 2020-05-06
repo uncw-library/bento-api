@@ -2,7 +2,10 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-const indexRouter = require('./routes/index')
+const journalController = require('./controllers/journals')
+const bookEbookController = require('./controllers/booksEbooks.js')
+const cDMController = require('./controllers/cDM.js')
+const summonController = require('./controllers/summon')
 
 /*
 app configuration
@@ -13,7 +16,43 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
-app.use('/', indexRouter)
+
+/*
+routes
+*/
+
+app.get('/', (req, res) => {
+  res.json({ message: 'It Works!' })
+})
+
+app.post('/', (req, res) => {
+  res.json({ message: 'It Works!' })
+})
+
+app.post('/journals', async (req, res, next) => {
+  res.json(await journalController.search(req.body.searchTerm, next))
+})
+
+app.post('/books-ebooks', async (req, res, next) => {
+  res.json(await bookEbookController.search(req.body.searchTerm, next))
+})
+
+app.post('/contentdm', async (req, res, next) => {
+  res.json(await cDMController.search(req.body.searchTerm, next))
+})
+
+app.post('/scholarly', async (req, res, next) => {
+  res.json(await summonController.search(req.body.searchTerm, next))
+})
+
+/*
+ if the request doesn't match a route above,
+ create a 404 error
+*/
+
+app.use((req, res, next) => {
+  res.status(404).json({ message: 'Endpoint Not Found' })
+})
 
 /*
 error handler
@@ -21,11 +60,8 @@ error handler
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
-  res.locals.message = err.message
-  console.error(err)
-  // send error details to view only in development
-  res.locals.error = app.get('env') === 'development' ? err : {}
-  res.json({ error: err })
+  console.log(err.message)
+  res.jsonp({ message: '', error: err.message })
 })
 
 module.exports = app
