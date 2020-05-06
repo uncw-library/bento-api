@@ -2,7 +2,7 @@ const axios = require('axios')
 const crypto = require('crypto')
 const keys = require('../keys')
 
-function search (searchParams) {
+async function search (searchParams, next) {
   const accept = 'application/json'
   const date = (new Date()).toGMTString()
   const host = 'api.summon.serialssolutions.com'
@@ -22,10 +22,9 @@ function search (searchParams) {
     }
   }
 
-  return axios.get(url, headers)
+  return await axios.get(url, headers)
     .then(res => res.data)
     .catch(next)
-
 }
 
 module.exports.search = search

@@ -18,7 +18,6 @@ async function search (searchTerm) {
 
 module.exports.search = search
 
-
 // returns data like:
 // [
 // {

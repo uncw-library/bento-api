@@ -10,7 +10,7 @@ describe('nonexistent endpoint returns a 404', () => {
   test('should give 404 for wrong page', async () => {
     const res = await request.get('/nonexistentpage')
     expect(res.status).toBe(404)
-    expect(res.text).toBe(JSON.stringify({ message: 'Endpoint Not Found'}))
+    expect(res.text).toBe(JSON.stringify({ message: 'Endpoint Not Found' }))
   })
 })
 
