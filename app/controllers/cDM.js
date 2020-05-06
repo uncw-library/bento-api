@@ -26,7 +26,8 @@ function enrich (res) {
 
 module.exports.search = search
 
-// enpoint expect data like:
+
+// returns data like:
 // {
 //   "collections":
 //   {

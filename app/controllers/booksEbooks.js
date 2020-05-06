@@ -58,5 +58,6 @@ async function search (searchTerm) {
 
 module.exports.search = search
 
-// enpoint expect data like:
-// ** no endpoint yet specified **
+
+// returns data like:
+// ** not yet specified **

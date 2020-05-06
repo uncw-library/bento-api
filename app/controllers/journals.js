@@ -18,7 +18,8 @@ async function search (searchTerm) {
 
 module.exports.search = search
 
-// enpoint expect data like:
+
+// returns data like:
 // [
 // {
 //   "browzine": [],

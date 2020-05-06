@@ -72,7 +72,7 @@ function getBibRecord (token, id) {
 }
 
 function searchBooksEbooks (token, term) {
-  const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`
+  const url = `https://libcat.uncw.edu/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`
   const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   return axios.get(url, headers)
