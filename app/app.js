@@ -3,9 +3,9 @@ const logger = require('morgan')
 const cors = require('cors')
 
 const journalController = require('./controllers/journals')
-const bookEbookController = require('./controllers/booksEbooks.js')
-const cDMController = require('./controllers/cDM.js')
-const summonController = require('./controllers/summon')
+const bookEbookController = require('./controllers/booksEbooks')
+const cDMController = require('./controllers/cDM')
+const scholarlyController = require('./controllers/scholarly')
 
 /*
 app configuration
@@ -42,7 +42,7 @@ app.post('/contentdm', async (req, res, next) => {
 })
 
 app.post('/scholarly', async (req, res, next) => {
-  res.json(await summonController.search(req.body.searchTerm, next))
+  res.json(await scholarlyController.search(req.body.searchTerm, next))
 })
 
 /*

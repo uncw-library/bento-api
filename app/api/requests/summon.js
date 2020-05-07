@@ -2,17 +2,17 @@ const axios = require('axios')
 const crypto = require('crypto')
 const keys = require('../keys')
 
-async function search (searchParams, next) {
+async function search (query, next) {
   const accept = 'application/json'
   const date = (new Date()).toGMTString()
   const host = 'api.summon.serialssolutions.com'
   const path = '/2.0.0/search'
-  const id = [accept, date, host, path, searchParams].join('\n') + '\n'
+  const id = [accept, date, host, path, query].join('\n') + '\n'
   const hmac = crypto.createHmac('sha1', keys.SUMMON_key)
   const hash = hmac.update(id)
   const digest = hash.digest('base64')
 
-  var url = `http://${host}${path}?${searchParams}`
+  var url = `http://${host}${path}?${query}`
   var headers = {
     headers: {
       Accept: accept,
@@ -21,7 +21,7 @@ async function search (searchParams, next) {
       Authorization: `Summon ${keys.SUMMON_id};${digest}`
     }
   }
-
+  console.log(url)
   return await axios.get(url, headers)
     .then(res => res.data)
     .catch(next)
