@@ -1,20 +1,35 @@
 const summonApi = require('../api/requests/summon')
 
-async function search (searchTerm, next) {
+async function search (searchTerm, searchType, next) {
   // available query elements:  https://developers.exlibrisgroup.com/summon/apis/searchapi/query/
-  let queryParts = [
-    's.fvf=IsFullText,true',
-    's.fvf=isScholarly,true',
-    's.fvf=ContentType,Journal Article',
-    's.hl=false',
-    's.ho=true',
-    's.l=en',
-    's.pn=0',
-    's.ps=5',
-    `s.q=${searchTerm}`,
-  ]
-  queryParts = queryParts.sort()
-  const query = queryParts.join('&')
+  const queryOptions = {
+    scholarly: [
+      's.fvf=IsFullText,true',
+      's.fvf=isScholarly,true',
+      's.fvf=ContentType,Journal Article',
+      's.hl=false',
+      's.ho=true',
+      's.l=en',
+      's.pn=0',
+      's.ps=5',
+      `s.q=${searchTerm}`
+    ],
+    newsMags: [
+      's.fvf=IsFullText,true',
+      's.fvf=ContentType,Magazine Article',
+      's.fvf=ContentType,Newspaper Article',
+      's.hl=false',
+      's.ho=true',
+      's.l=en',
+      's.pn=0',
+      's.ps=5',
+      `s.q=${searchTerm}`
+    ]
+  }
+
+  const params = queryOptions[searchType]
+  const sorted = params.sort()
+  const query = sorted.join('&')
   const results = (await summonApi.search(query, next))
   const trimmed = trimResults(results)
   return await trimmed
@@ -25,9 +40,9 @@ function trimResults (results) {
   for (const doc of Object.values(results.documents)) {
     const trimmedItem = {
       date: formatDate({
-          year: getNestedObject(doc, ['PublicationDate_xml', '0', 'year']),
-          month: getNestedObject(doc, ['PublicationDate_xml', '0', 'month']),
-          day: getNestedObject(doc, ['PublicationDate_xml', '0', 'day'])
+        year: getNestedObject(doc, ['PublicationDate_xml', '0', 'year']),
+        month: getNestedObject(doc, ['PublicationDate_xml', '0', 'month']),
+        day: getNestedObject(doc, ['PublicationDate_xml', '0', 'day'])
       }),
       authors: truncateAuthors({
         authorList: getNestedObject(doc, ['Author'])
@@ -52,18 +67,14 @@ function truncateAuthors (authorObj) {
   }
   if (authorList && authorList.length === 0) {
     return ''
-  }
-  else if (authorList && authorList.length === 1) {
+  } else if (authorList && authorList.length === 1) {
     return authorList[0]
-  }
-  else if (authorList && authorList.length === 2) {
+  } else if (authorList && authorList.length === 2) {
     return authorList.join(' and ')
-  }
-  else if (authorList && authorList.length === 3) {
+  } else if (authorList && authorList.length === 3) {
     return `${authorList[0]}; ${authorList[1]}; ${authorList[2]}`
-  }
-  else {
-    return `${authorList[0]}; ${authorList[1]}; ${authorList[2]} and others` 
+  } else {
+    return `${authorList[0]}; ${authorList[1]}; ${authorList[2]} and others`
   }
 }
 
@@ -93,10 +104,10 @@ function formatDate (yearMonthDay) {
       if (day && day.length !== 0) {
         return `${monthText} ${day}, ${year}`
       } else {
-        return `${monthText} ${year}` 
-        }
+        return `${monthText} ${year}`
+      }
     } else {
-     return `${year}`
+      return `${year}`
     }
   }
 }

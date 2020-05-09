@@ -21,7 +21,6 @@ async function search (query, next) {
       Authorization: `Summon ${keys.SUMMON_id};${digest}`
     }
   }
-  console.log(url)
   return await axios.get(url, headers)
     .then(res => res.data)
     .catch(next)

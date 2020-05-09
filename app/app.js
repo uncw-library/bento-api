@@ -5,7 +5,7 @@ const cors = require('cors')
 const journalController = require('./controllers/journals')
 const bookEbookController = require('./controllers/booksEbooks')
 const cDMController = require('./controllers/cDM')
-const scholarlyController = require('./controllers/scholarly')
+const summonController = require('./controllers/summon')
 
 /*
 app configuration
@@ -42,7 +42,11 @@ app.post('/contentdm', async (req, res, next) => {
 })
 
 app.post('/scholarly', async (req, res, next) => {
-  res.json(await scholarlyController.search(req.body.searchTerm, next))
+  res.json(await summonController.search(req.body.searchTerm, 'scholarly', next))
+})
+
+app.post('/newsmags', async (req, res, next) => {
+  res.json(await summonController.search(req.body.searchTerm, 'newsMags', next))
 })
 
 /*
