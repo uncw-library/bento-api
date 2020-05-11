@@ -6,6 +6,7 @@ const journalController = require('./controllers/journals')
 const bookEbookController = require('./controllers/booksEbooks')
 const cDMController = require('./controllers/cDM')
 const summonController = require('./controllers/summon')
+const libcatController = require('./controllers/libcat')
 
 /*
 app configuration
@@ -42,7 +43,7 @@ app.post('/databases', async (req, res, next) => {
 })
 
 app.post('/govdocs', async (req, res, next) => {
-  res.json({ message: 'not yet implemented' })
+  res.json(await libcatController.search(req.body.searchTerm, 'govdocs', next))
 })
 
 app.post('/journals', async (req, res, next) => {
@@ -58,7 +59,7 @@ app.post('/scholarly', async (req, res, next) => {
 })
 
 app.post('/videos-music', async (req, res, next) => {
-  res.json(await journalController.search(req.body.searchTerm, next))
+  res.json(await libcatController.search(req.body.searchTerm, 'videos-music', next))
 })
 
 /*
