@@ -1,15 +1,14 @@
-const sierraApi = require('../api/requests/sierra');
+const sierraApi = require('../api/requests/sierra')
 
-async function getBooksAndEbooks(searchTerm) {
-  const token = JSON.parse(await sierraApi.authenticate()).access_token;
-  const bibs = (await sierraApi.searchBooksEbooks(token, searchTerm));
-  const ids = [];
-  const bibRecords = [];
+async function search (searchTerm) {
+  const token = (await sierraApi.authenticate())
+  const bibs = (await sierraApi.searchBooksEbooks(token, searchTerm))
+  // const ids = []
+  // const bibRecords = []
+  // const booksEbooks = []
+  // const videos = []
 
-  const booksEbooks = [];
-  const videos = [];
-
-  /*bibs.forEach(bib => {
+  /*  bibs.forEach(bib => {
     let supressed = bib.bib.supressed;
     if (!supressed) {
       let code = bib.bib.materialType.code.replace(/ /g, '');
@@ -41,20 +40,23 @@ async function getBooksAndEbooks(searchTerm) {
     } else {
       // do nothing
     }
-  });*/
+  });
+*/
 
-  return bibs;
+  return bibs
 
-  /*bibLinks.entries.forEach(entry => ids.push(entry.link.match(/[^/]+$/g)[0]));
+  /* bibLinks.entries.forEach(entry => ids.push(entry.link.match(/[^/]+$/g)[0]));
 
   ids.forEach((id) => {
     const bibRecord = (sierraApi.getBibRecord(token, id));
     bibRecords.push(bibRecord);
   });
 
-  return bibRecords;*/
+  return bibRecords;
+  */
 }
 
-module.exports = {
-  getBooksAndEbooks,
-};
+module.exports.search = search
+
+// returns data like:
+// ** not yet specified **

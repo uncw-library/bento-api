@@ -6,7 +6,7 @@ This repo builds an API server at https://new-bento.libapps.uncw.edu/ used by ht
 The app accepts POST requests with a searchTerm at:
 
  - https://library.uncw.edu/search_randall/journals
- - https://library.uncw.edu/search_randall/books_ebooks
+ - https://library.uncw.edu/search_randall/books-ebooks
  - https://library.uncw.edu/search_randall/contentdm
 
 The app queries sierra, contentDM and browzine for items matching the search term.
@@ -18,6 +18,10 @@ It returns a JSON of matches.
   POST a request from the command line with:
   
 `curl --data "searchTerm=hi" "https://new-bento.libapps.uncw.edu/journals"`
+
+or
+
+`curl --data "searchTerm=hi" "http://localhost:8010/journals"`
 
 ### To build a dev box
 
@@ -35,6 +39,10 @@ It returns a JSON of matches.
     - bento item in Stack
     - new-bento-bento-1 in the "Container" tab
     - Environment row in the "Command" tab
+
+#### To run tests on dev box
+
+  - `docker-compose exec bento npm run test`
 
 #### Starting it
 
