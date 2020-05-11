@@ -6,6 +6,14 @@ const supertest = require('supertest')
 const request = supertest(app)
 jest.mock('axios')
 
+describe('nonexistent endpoint returns a 404', () => {
+  test('should give 404 for wrong page', async () => {
+    const res = await request.get('/nonexistentpage')
+    expect(res.status).toBe(404)
+    expect(res.text).toBe(JSON.stringify({ message: 'Endpoint Not Found' }))
+  })
+})
+
 describe('getroot', () => {
   test('should give 200 if API gives good respose', async () => {
     const res = await request.get('/')
@@ -98,19 +106,11 @@ describe('POST /contentdm', () => {
 
 describe('POST failing /contentdm', () => {
   test('should give a useful fail response', async () => {
-    // const cdmResponse = {}
-    // axios.get.mockImplementationOnce(() => Promise.resolve(cdmResponse))
+    const data = { searchTerm: 'hi there hello' }
+    axios.get.mockImplementationOnce(() => Promise.reject(new Error('test')))
     const res = await request.post('/contentdm')
-      .send('')
+      .send(data)
     expect(res.status).toBe(500)
-  })
-})
-
-describe('nonexistent endpoint returns a 404', () => {
-  test('should give 404 for wrong page', async () => {
-    const res = await request.get('/nonexistentpage')
-    expect(res.status).toBe(404)
-    expect(res.text).toBe(JSON.stringify({ message: 'Endpoint Not Found'}))
   })
 })
 

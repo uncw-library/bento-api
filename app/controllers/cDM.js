@@ -1,11 +1,11 @@
 const axios = require('axios')
 
 // get information about the digital collections
-function search (searchTerm) {
+async function search (searchTerm, next) {
   const url = makeURL(searchTerm)
-  return axios.get(url)
+  return await axios.get(url)
     .then(res => enrich(res))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 function makeURL (searchTerm) {
@@ -25,7 +25,6 @@ function enrich (res) {
 }
 
 module.exports.search = search
-
 
 // returns data like:
 // {
