@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
 })
 
 app.post('/books-ebooks', async (req, res, next) => {
-  res.json(await bookEbookController.search(req.body.searchTerm, next))
+  res.json(await libcatController.search(req.body.searchTerm, 'books-ebooks', next))
 })
 
 app.post('/contentdm', async (req, res, next) => {

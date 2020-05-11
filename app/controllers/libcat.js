@@ -14,6 +14,8 @@ function makeURL (searchTerm, searchType) {
     return `http://libcat.uncw.edu/search~S4/X?SEARCH=(${searchTerm})&SORT=D&b=wd`
   } else if (searchType === 'videos-music') {
     return `http://libcat.uncw.edu/search/X?SEARCH=(${searchTerm})&searchscope=4&SORT=D&m=g&b=wa&b=ev`
+  } else if (searchType === 'books-ebooks') {
+    return `http://libcat.uncw.edu/search/X?SEARCH=(${searchTerm})&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb`
   }
 }
 
@@ -28,7 +30,8 @@ function extract (html) {
     const author = rows[6]
     const citation = rows[7]
     const url = `https://libcat.uncw.edu${$('h2.briefcitTitle a', v).attr('href')}`
-    bundle.push({ title: title, author: author, citation: citation, url: url })
+    const image = `${$(v).closest('tr').find('.briefcitJacket img').attr('src')}`
+    bundle.push({ title: title, author: author, citation: citation, url: url, image: image })
   })
   return bundle
 }
