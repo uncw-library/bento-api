@@ -3,7 +3,6 @@ const logger = require('morgan')
 const cors = require('cors')
 
 const journalController = require('./controllers/journals')
-const bookEbookController = require('./controllers/booksEbooks')
 const cDMController = require('./controllers/cDM')
 const summonController = require('./controllers/summon')
 const libcatController = require('./controllers/libcat')
