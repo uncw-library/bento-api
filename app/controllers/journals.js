@@ -1,15 +1,15 @@
 const sierraApi = require('../api/requests/sierra')
 const browzineApi = require('../api/requests/browzine')
 
-async function search (searchTerm) {
-  const token = (await sierraApi.authenticate())
-  const bibLinks = (await sierraApi.searchJournals(token, searchTerm))
+async function search (searchTerm, next) {
+  const token = (await sierraApi.authenticate(next))
+  const bibLinks = (await sierraApi.searchJournals(token, searchTerm, next))
 
   const enrichedRecords = (await Promise.all(
-    bibLinks.map(id => sierraApi.getBibRecord(token, id)
+    bibLinks.map(id => sierraApi.getBibRecord(token, id, next)
       .then(record => {
         const recordNum = Object.keys(record)[0]
-        return browzineApi.search(record[recordNum], record.title, recordNum)
+        return browzineApi.search(record[recordNum], record.title, recordNum, next)
       })
     )
   ))

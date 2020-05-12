@@ -36,7 +36,7 @@ function parseBib (res) {
 exported functions
 */
 
-function authenticate () {
+function authenticate (next) {
   const url = 'https://libcat.uncw.edu/iii/sierra-api/v5/token'
   const data = {}
   const headers = { headers: { Authorization: `Basic ${keys.sierra}` } }
@@ -46,7 +46,7 @@ function authenticate () {
     .catch(next)
 }
 
-function searchJournals (token, term) {
+function searchJournals (token, term, next) {
   const url = 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3'
   const data = {
     queries: [{
@@ -62,7 +62,7 @@ function searchJournals (token, term) {
     .catch(next)
 }
 
-function getBibRecord (token, id) {
+function getBibRecord (token, id, next) {
   const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/${id}/marc`
   const headers = { headers: { Authorization: `Bearer ${token}`, Accept: 'application/marc-in-json' } }
 
@@ -71,7 +71,7 @@ function getBibRecord (token, id) {
     .catch(next)
 }
 
-function searchBooksEbooks (token, term) {
+function searchBooksEbooks (token, term, next) {
   const url = `https://libcat.uncw.edu/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`
   const headers = { headers: { Authorization: `Bearer ${token}` } }
 

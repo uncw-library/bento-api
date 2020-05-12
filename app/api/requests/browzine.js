@@ -1,7 +1,7 @@
 const axios = require('axios')
 const keys = require('../keys')
 
-function search (issn, title, recordNum) {
+function search (issn, title, recordNum, next) {
   const url = `https://public-api.thirdiron.com/public/v1/libraries/1552/search?issns=${issn}`
   const headers = { headers: { Authorization: `Bearer ${keys.browzine}` } }
 
