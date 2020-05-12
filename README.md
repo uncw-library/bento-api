@@ -5,11 +5,16 @@ This repo builds an API server at https://new-bento.libapps.uncw.edu/ used by ht
 
 The app accepts POST requests with a searchTerm at:
 
- - https://library.uncw.edu/search_randall/journals
  - https://library.uncw.edu/search_randall/books-ebooks
  - https://library.uncw.edu/search_randall/contentdm
+ - https://library.uncw.edu/search_randall/databases
+ - https://library.uncw.edu/search_randall/govdocs  
+ - https://library.uncw.edu/search_randall/journals
+ - https://library.uncw.edu/search_randall/newsmags
+ - https://library.uncw.edu/search_randall/scholarly
+ - https://library.uncw.edu/search_randall/videos-music
 
-The app queries sierra, contentDM and browzine for items matching the search term.
+The app queries sierra, contentDM, libcat, and browzine for items matching the search term.
 
 It returns a JSON of matches.
 
@@ -27,10 +32,14 @@ or
 
   - Make a file at "new-bento/.env" with contents:
 
-> SIERRA_API_KEY=Password
->
-> BROWZINE_API_KEY=Password
->
+SIERRA_API_KEY=Password
+BROWZINE_API_KEY=Password
+SIERRA_API_KEY=Password	
+BROWZINE_API_KEY=Password
+OCLC__wskey=Password
+SUMMON__api_id=Password
+SUMMON__api_key=Password
+NODE_ENV=development
 
   - The actual Passwords can be found in the Rancher web interface:
 
@@ -39,10 +48,6 @@ or
     - bento item in Stack
     - new-bento-bento-1 in the "Container" tab
     - Environment row in the "Command" tab
-
-#### To run tests on dev box
-
-  - `docker-compose exec bento npm run test`
 
 #### Starting it
 
@@ -57,6 +62,16 @@ docker-compose up --build
 curl "http://localhost:8010/"
 curl --data "searchTerm=hi" "http://localhost:8010/journals"
 ```
+
+#### To run tests on dev box
+
+  - `docker-compose exec bento npm run test`
+
+#### To lint the dev box
+
+  - `docker-compose exec bento npx eslint .`
+
+
 ### To build a prod box
 
 ```
