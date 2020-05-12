@@ -4,8 +4,9 @@ const cheerio = require('cheerio')
 // get information about the digital collections
 async function search (searchTerm, searchType, next) {
   const url = makeURL(searchTerm, searchType)
+  console.log(url)
   return await axios.get(url)
-    .then(res => extract(res))
+    .then(res => extract(res.data))
     .catch(next)
 }
 
@@ -20,15 +21,16 @@ function makeURL (searchTerm, searchType) {
 }
 
 function extract (html) {
-  // this approach is a hack, because libcat does not create proper html
-  const $ = cheerio.load(html.data)
+  // this "rows" approach is a hack, because libcat does not create proper html
+  // expect to revise this function regularly, until libcat Sierra gives divs with classes for author/title/citations
+  const $ = cheerio.load(html)
   const items = $('div.briefcitDetailMain').slice(0, 5)
   const bundle = []
   items.each((k, v) => {
     const rows = $(v).text().split('\n')
-    const title = rows[4]
-    const author = rows[6]
-    const citation = rows[7]
+    const title = rows[4].trim()
+    const author = rows[6].trim()
+    const citation = rows[7].trim()
     const url = `https://libcat.uncw.edu${$('h2.briefcitTitle a', v).attr('href')}`
     const image = `${$(v).closest('tr').find('.briefcitJacket img').attr('src')}`
     bundle.push({ title: title, author: author, citation: citation, url: url, image: image })
