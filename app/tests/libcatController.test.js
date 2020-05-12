@@ -3,7 +3,6 @@ const libcatController = rewire('../controllers/libcat')
 
 const extract = libcatController.__get__('extract')
 
-
 describe('extract tries to pull the expected data from an unreliable source', () => {
   test('govdocs example', () => {
     const bundle = [
@@ -1842,44 +1841,43 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
   })
 })
 
-
 describe('extract tries to pull the expected data from an unreliable source', () => {
   test('books-ebooks example', () => {
     const bundle = [
       {
-        "title":"Hi, Koo! : a year of seasons",
-        "author":"Muth, Jon J",
-        "citation":"New York : Scholastic Press, 2014",
-        "url":"https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&1%2C1%2C",
-        "image":"https://www.syndetics.com/index.aspx?isbn=9780545166683/SC.GIF&client=uncwh&upc=&oclc=816499033&issn="
+        title: 'Hi, Koo! : a year of seasons',
+        author: 'Muth, Jon J',
+        citation: 'New York : Scholastic Press, 2014',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&1%2C1%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=9780545166683/SC.GIF&client=uncwh&upc=&oclc=816499033&issn='
       },
       {
-        "title":"Hi-lo comprehension-building passages : mini-mysteries : 15 reproducible passages with comprehension questions that  guide students to infer, visualize, summarize, predict, and more",
-        "author":"Doyle, Bill H., 1968-",
-        "citation":"New York : Scholastic, c2013",
-        "url":"https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&2%2C2%2C",
-        "image":"https://www.syndetics.com/index.aspx?isbn=0545124085/SC.GIF&client=uncwh&upc=&oclc=795009394&issn="
+        title: 'Hi-lo comprehension-building passages : mini-mysteries : 15 reproducible passages with comprehension questions that  guide students to infer, visualize, summarize, predict, and more',
+        author: 'Doyle, Bill H., 1968-',
+        citation: 'New York : Scholastic, c2013',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&2%2C2%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=0545124085/SC.GIF&client=uncwh&upc=&oclc=795009394&issn='
       },
       {
-        "title":"Managing creativity in science and hi-tech",
-        "author":"Kay, Ronald, Dr",
-        "citation":"Berlin ; London : Springer, 2012",
-        "url":"https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&3%2C3%2C",
-        "image":"https://www.syndetics.com/index.aspx?isbn=9783642246357/SC.GIF&client=uncwh&upc=9786613698193&oclc=794925355&issn="
+        title: 'Managing creativity in science and hi-tech',
+        author: 'Kay, Ronald, Dr',
+        citation: 'Berlin ; London : Springer, 2012',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&3%2C3%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=9783642246357/SC.GIF&client=uncwh&upc=9786613698193&oclc=794925355&issn='
       },
       {
-        "title":"Hi Iþm ... Pirate",
-        "author":"Lopetegui, José A",
-        "citation":"[Álava] : Editorial Saure, [2011]",
-        "url":"https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&4%2C4%2C",
-        "image":"https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=868945022&issn="
+        title: 'Hi Iþm ... Pirate',
+        author: 'Lopetegui, José A',
+        citation: '[Álava] : Editorial Saure, [2011]',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&4%2C4%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=868945022&issn='
       },
       {
-        "title":"Hi-de-ho the life of Cab Calloway",
-        "author":"Shipton, Alyn",
-        "citation":"Oxford : Oxford University Press, 2010",
-        "url":"https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&5%2C5%2C",
-        "image":"https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=671741245&issn="
+        title: 'Hi-de-ho the life of Cab Calloway',
+        author: 'Shipton, Alyn',
+        citation: 'Oxford : Oxford University Press, 2010',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&5%2C5%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=671741245&issn='
       }
     ]
     const html = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en">
@@ -3791,39 +3789,39 @@ describe('extract tries to pull the expected data from an unreliable source', ()
   test('videos-music example', () => {
     const bundle = [
       {
-        "title": "Hi-Tech Tattoo For Your Workouts",
-        "author": "",
-        "citation": "New York, N.Y. : Infobase, [2014], c2013",
-        "url": "https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&1%2C1%2C",
-        "image": "https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=100057383&issn="
+        title: 'Hi-Tech Tattoo For Your Workouts',
+        author: '',
+        citation: 'New York, N.Y. : Infobase, [2014], c2013',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&1%2C1%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=100057383&issn='
       },
       {
-        "title": "Anyay hi anyay",
-        "author": "",
-        "citation": "Mumbai, India : Star Entertainment, [2000?]",
-        "url": "https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&2%2C2%2C",
-        "image": "https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=501029231&issn="
+        title: 'Anyay hi anyay',
+        author: '',
+        citation: 'Mumbai, India : Star Entertainment, [2000?]',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&2%2C2%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=501029231&issn='
       },
       {
-        "title": "Delegate to Congress Joseph R. Farrington (R-HI) (1953)",
-        "author": "",
-        "citation": "[United States] : Columbia Broadcasting System, 1953",
-        "url": "https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&3%2C3%2C",
-        "image": "https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=677927371&issn="
+        title: 'Delegate to Congress Joseph R. Farrington (R-HI) (1953)',
+        author: '',
+        citation: '[United States] : Columbia Broadcasting System, 1953',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&3%2C3%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=677927371&issn='
       },
       {
-        "title": "Delegate to Congress Joseph R. Farrington (R-HI) (1952)",
-        "author": "",
-        "citation": "[United States] : Columbia Broadcasting System, 1952",
-        "url": "https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&4%2C4%2C",
-        "image": "https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=677927577&issn="
+        title: 'Delegate to Congress Joseph R. Farrington (R-HI) (1952)',
+        author: '',
+        citation: '[United States] : Columbia Broadcasting System, 1952',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&4%2C4%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=677927577&issn='
       },
       {
-        "title": "MIRA Rehab a tale of hi-tech physiotherapy",
-        "author": "Mihaiu, Cosmin, (MIRA Rehab, UK)",
-        "citation": "London : Henry Stewart Talks, 2017",
-        "url": "https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&5%2C5%2C",
-        "image": "https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=4434&issn="
+        title: 'MIRA Rehab a tale of hi-tech physiotherapy',
+        author: 'Mihaiu, Cosmin, (MIRA Rehab, UK)',
+        citation: 'London : Henry Stewart Talks, 2017',
+        url: 'https://libcat.uncw.edu/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&5%2C5%2C',
+        image: 'https://www.syndetics.com/index.aspx?isbn=/SC.GIF&client=uncwh&upc=&oclc=4434&issn='
       }
     ]
     const html = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en">
