@@ -36,17 +36,17 @@ function parseBib (res) {
 exported functions
 */
 
-function authenticate () {
+function authenticate (next) {
   const url = 'https://libcat.uncw.edu/iii/sierra-api/v5/token'
   const data = {}
   const headers = { headers: { Authorization: `Basic ${keys.sierra}` } }
 
   return axios.post(url, data, headers)
     .then(res => res.data.access_token)
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
-function searchJournals (token, term) {
+function searchJournals (token, term, next) {
   const url = 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3'
   const data = {
     queries: [{
@@ -59,25 +59,25 @@ function searchJournals (token, term) {
 
   return axios.post(url, data, headers)
     .then(res => getLastItem(res.data.entries))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
-function getBibRecord (token, id) {
+function getBibRecord (token, id, next) {
   const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/${id}/marc`
   const headers = { headers: { Authorization: `Bearer ${token}`, Accept: 'application/marc-in-json' } }
 
   return axios.get(url, headers)
     .then(res => parseBib(res))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
-function searchBooksEbooks (token, term) {
+function searchBooksEbooks (token, term, next) {
   const url = `https://libcat.uncw.edu/iii/sierra-api/v5/bibs/search?fields=suppressed%2CmaterialType%2Clocations&text=${term}`
   const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   return axios.get(url, headers)
     .then(res => res.data)
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 module.exports = {
