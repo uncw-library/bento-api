@@ -4,7 +4,6 @@ const cheerio = require('cheerio')
 // get information about the digital collections
 async function search (searchTerm, searchType, next) {
   const url = makeURL(searchTerm, searchType)
-  console.log(url)
   return await axios.get(url)
     .then(res => extract(res.data))
     .catch(next)

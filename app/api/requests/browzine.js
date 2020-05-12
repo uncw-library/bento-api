@@ -13,7 +13,7 @@ function search (issn, title, recordNum) {
       issn
     }
     ))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 module.exports.search = search

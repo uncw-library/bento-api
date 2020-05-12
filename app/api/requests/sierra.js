@@ -43,7 +43,7 @@ function authenticate () {
 
   return axios.post(url, data, headers)
     .then(res => res.data.access_token)
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 function searchJournals (token, term) {
@@ -59,7 +59,7 @@ function searchJournals (token, term) {
 
   return axios.post(url, data, headers)
     .then(res => getLastItem(res.data.entries))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 function getBibRecord (token, id) {
@@ -68,7 +68,7 @@ function getBibRecord (token, id) {
 
   return axios.get(url, headers)
     .then(res => parseBib(res))
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 function searchBooksEbooks (token, term) {
@@ -77,7 +77,7 @@ function searchBooksEbooks (token, term) {
 
   return axios.get(url, headers)
     .then(res => res.data)
-    .catch(error => console.log(error))
+    .catch(next)
 }
 
 module.exports = {
