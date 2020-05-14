@@ -26,7 +26,7 @@ function extract (html) {
   items.each((k, v) => {
     const title = $(v).find('h2.briefcitTitle a').text().trim()
     const author = $(v).find('div.author').text().trim()
-    const citation = $(v).find('div.citation').text().trim()
+    const citation = $(v).find('div.imprint').text().trim()
     const url = `https://libcat.uncw.edu${$('h2.briefcitTitle a', v).attr('href')}`
     const image = `${$(v).closest('tr').find('.briefcitJacket img').attr('src')}`
     bundle.push({ title: title, author: author, citation: citation, url: url, image: image })
