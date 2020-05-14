@@ -3,8 +3,16 @@ const libcatController = rewire('../controllers/libcat')
 
 const extract = libcatController.__get__('extract')
 
+/*
+These tests are a bit of a hack.
+The variable "bundle" is what you'd expect to extract from a given html text.
+The variable "html" is a Ctrl-C from "Inspect source" on a page.
+
+*/
+
 describe('extract tries to pull the expected data from the html', () => {
   test('govdocs example', () => {
+    // page from https://libcat.uncw.edu/search~S4/X?SEARCH=(hi)&SORT=D&b=wd
     const bundle = [
       {
         title: 'Hi-Tech Bed Systems Corporation',
@@ -518,7 +526,7 @@ name="save" value="b2413017" >
 <div class="author">
 United States. Government Accountability Office</div>
 
-<div class="citation">
+<div class="imprint">
 Washington, D.C. : U.S. Govt. Accountability Office, [2012]</div>
 
   <!--{year}-->
@@ -622,7 +630,7 @@ name="save" value="b2291465" >
 <div class="author">
 Workshop on At-sea Detection and Removal of Derelict Fishing Gear (2008 : Honolulu, Hawaii)</div>
 
-<div class="citation">
+<div class="imprint">
 Silver Spring, MD : U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Ocean Service, Office of Response & Restoration, Marine Debris Division, [2010]</div>
 
   <!--{year}-->
@@ -726,7 +734,7 @@ name="save" value="b2917078" >
 <div class="author">
 Pfeiffer, Lois J., author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
 
   <!--{year}-->
@@ -830,7 +838,7 @@ name="save" value="b2917107" >
 <div class="author">
 Oechsner, Marynell, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
 
   <!--{year}-->
@@ -934,7 +942,7 @@ name="save" value="b2917108" >
 <div class="author">
 Oechsner, Marynell, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
 
   <!--{year}-->
@@ -1038,7 +1046,7 @@ name="save" value="b2917114" >
 <div class="author">
 Oechsner, Marynell, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
 
   <!--{year}-->
@@ -1142,7 +1150,7 @@ name="save" value="b2917071" >
 <div class="author">
 Pfeiffer, Lois J., author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
 
   <!--{year}-->
@@ -1246,7 +1254,7 @@ name="save" value="b2917074" >
 <div class="author">
 Baker, Blaze, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
 
   <!--{year}-->
@@ -1350,7 +1358,7 @@ name="save" value="b2917077" >
 <div class="author">
 Goetz, Jeanne, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009</div>
 
   <!--{year}-->
@@ -1454,7 +1462,7 @@ name="save" value="b2917079" >
 <div class="author">
 Helmbrecht, Donald J., author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
 
   <!--{year}-->
@@ -1558,7 +1566,7 @@ name="save" value="b2917080" >
 <div class="author">
 Desser, Rochelle, author</div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
 
   <!--{year}-->
@@ -1662,7 +1670,7 @@ name="save" value="b2917081" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009</div>
 
   <!--{year}-->
@@ -1871,15 +1879,14 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 <!-- end botlogo.html file -->
 
 </body>
-</html>
-
-`
+</html>`
     expect(extract(html)).toEqual(bundle)
   })
 })
 
 describe('extract tries to pull the expected data from an unreliable source', () => {
   test('books-ebooks example', () => {
+    // page from https://libcat.uncw.edu/search/X?SEARCH=(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb
     const bundle = [
       {
         title: 'Hi, Koo! : a year of seasons',
@@ -2401,7 +2408,7 @@ name="save" value="b2499425" >
 <div class="author">
 Muth, Jon J</div>
 
-<div class="citation">
+<div class="imprint">
 New York : Scholastic Press, 2014</div>
 
   <!--{year}-->
@@ -2530,7 +2537,7 @@ name="save" value="b2431836" >
 <div class="author">
 Doyle, Bill H., 1968-</div>
 
-<div class="citation">
+<div class="imprint">
 New York : Scholastic, c2013</div>
 
   <!--{year}-->
@@ -2653,7 +2660,7 @@ name="save" value="b2452350" >
 <div class="author">
 Kay, Ronald, Dr</div>
 
-<div class="citation">
+<div class="imprint">
 Berlin ; London : Springer, 2012</div>
 
   <!--{year}-->
@@ -2757,7 +2764,7 @@ name="save" value="b2706290" >
 <div class="author">
 Lopetegui, José A</div>
 
-<div class="citation">
+<div class="imprint">
 [Álava] : Editorial Saure, [2011]</div>
 
   <!--{year}-->
@@ -2861,7 +2868,7 @@ name="save" value="b2651851" >
 <div class="author">
 Shipton, Alyn</div>
 
-<div class="citation">
+<div class="imprint">
 Oxford : Oxford University Press, 2010</div>
 
   <!--{year}-->
@@ -2965,7 +2972,7 @@ name="save" value="b2625551" >
 <div class="author">
 Banks, Jane Whelen</div>
 
-<div class="citation">
+<div class="imprint">
 London ; Philadelphia, PA : Jessica Kingsley Publishers, 2009</div>
 
   <!--{year}-->
@@ -3069,7 +3076,7 @@ name="save" value="b2225280" >
 <div class="author">
 Lundmark, Torbjörn</div>
 
-<div class="citation">
+<div class="imprint">
 Cambridge ; Port Melbourne : Cambridge University Press, 2009</div>
 
   <!--{year}-->
@@ -3173,7 +3180,7 @@ name="save" value="b2623355" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [Bradford, England] : Emerald, 2008</div>
 
   <!--{year}-->
@@ -3277,7 +3284,7 @@ name="save" value="b2620715" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 Bradford : Emerald Insight, c2007</div>
 
   <!--{year}-->
@@ -3381,7 +3388,7 @@ name="save" value="b2221899" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 New York : Scholastic, c2006</div>
 
   <!--{year}-->
@@ -3504,7 +3511,7 @@ name="save" value="b2019981" >
 <div class="author">
 Arnold, Tedd</div>
 
-<div class="citation">
+<div class="imprint">
 New York : Scholastic, c2005</div>
 
   <!--{year}-->
@@ -3633,7 +3640,7 @@ name="save" value="b2596334" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 Bradford, England : Emerald Group Publishing, c2005</div>
 
   <!--{year}-->
@@ -3850,15 +3857,14 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 <!-- end botlogo.html file -->
 
 </body>
-</html>
-
-`
+</html>`
     expect(extract(html)).toEqual(bundle)
   })
 })
 
 describe('extract tries to pull the expected data from an unreliable source', () => {
   test('videos-music example', () => {
+    // page from https://libcat.uncw.edu/search/X?SEARCH=(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev
     const bundle = [
       {
         title: 'Hi-Tech Tattoo For Your Workouts',
@@ -4205,8 +4211,6 @@ return false;
 <a href="/search~S4/X?NOSRCH=(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)"><span class="button"><img src="/screens/ico_magnifyingglass_modify.gif" alt=""><span class="buttonText">Modify Search</span></span></a>
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
 </select>
@@ -4378,7 +4382,7 @@ name="save" value="b3010453" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 New York, N.Y. : Infobase, [2014], c2013</div>
 
   <!--{year}-->
@@ -4482,7 +4486,7 @@ name="save" value="b2134978" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 Mumbai, India : Star Entertainment, [2000?]</div>
 
   <!--{year}-->
@@ -4605,7 +4609,7 @@ name="save" value="b3255601" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [United States] : Columbia Broadcasting System, 1953</div>
 
   <!--{year}-->
@@ -4709,7 +4713,7 @@ name="save" value="b3255860" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [United States] : Columbia Broadcasting System, 1952</div>
 
   <!--{year}-->
@@ -4815,7 +4819,7 @@ name="save" value="b3236343" >
 <div class="author">
 Mihaiu, Cosmin, (MIRA Rehab, UK)</div>
 
-<div class="citation">
+<div class="imprint">
 London : Henry Stewart Talks, 2017</div>
 
   <!--{year}-->
@@ -4919,7 +4923,7 @@ name="save" value="b2468125" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [New York] : Tokyo Shock, 2004</div>
 
   <!--{year}-->
@@ -5042,7 +5046,7 @@ name="save" value="b1880912" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 Culver City, Calif. : Columbia TriStar Home Video, c2000</div>
 
   <!--{year}-->
@@ -5165,7 +5169,7 @@ name="save" value="b1837503" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 New York, NY : A&E Home Video, c1994</div>
 
   <!--{year}-->
@@ -5288,7 +5292,7 @@ name="save" value="b3254163" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 London, England : Arts Council England, 1993</div>
 
   <!--{year}-->
@@ -5394,7 +5398,7 @@ name="save" value="b3346834" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 Video Project, 2018</div>
 
   <!--{year}-->
@@ -5498,7 +5502,7 @@ name="save" value="b3217403" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [Place of publication not identified] :  PBS,  [2016]</div>
 
   <!--{year}-->
@@ -5602,7 +5606,7 @@ name="save" value="b3341760" >
 <div class="author">
 </div>
 
-<div class="citation">
+<div class="imprint">
 [San Francisco, California, USA] : Kanopy Streaming, 2016</div>
 
   <!--{year}-->
@@ -5766,8 +5770,6 @@ Result Page&nbsp;&nbsp;&nbsp;<strong>1</strong>
 <a href="/search~S4/X?NOSRCH=(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)"><span class="button"><img src="/screens/ico_magnifyingglass_modify.gif" alt=""><span class="buttonText">Modify Search</span></span></a>
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
 </select>
@@ -5817,9 +5819,7 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 <!-- end botlogo.html file -->
 
 </body>
-</html>
-
-`
+</html>`
     expect(extract(html)).toEqual(bundle)
   })
 })
