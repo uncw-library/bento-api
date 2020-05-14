@@ -2,37 +2,6 @@ const axios = require('axios')
 const keys = require('../keys')
 
 /*
-helper functions
-*/
-
-function getLastItem (array) {
-  // was: return array.map(i => i.link.match(/[^/]+$/g)[0]))
-  return array.map(i => i.link.split('/')[i.link.split('/').length - 1])
-}
-
-function parseBib (res) {
-  // each data is an item's marc record, in json format.
-  // we only want the issn & title (from subfields)
-  const filteredObjs = res.data.fields.filter(obj => Object.keys(obj)[0] === '022')
-  const filteredObjsTitle = res.data.fields.filter(obj => Object.keys(obj)[0] === '245')
-  var issn, title
-  try {
-    issn = filteredObjs[0]['022'].subfields[0].a.replace(/-/g, '')
-  } catch (e) {
-    issn = null
-  };
-  try {
-    title = filteredObjsTitle[0]['245'].subfields[0].a
-  } catch (e) {
-    title = null
-  }
-  const obj = {}
-  obj.id = issn
-  obj.title = title
-  return obj
-}
-
-/*
 exported functions
 */
 
@@ -78,6 +47,37 @@ function searchBooksEbooks (token, term, next) {
   return axios.get(url, headers)
     .then(res => res.data)
     .catch(next)
+}
+
+/*
+helper functions
+*/
+
+function getLastItem (array) {
+  // was: return array.map(i => i.link.match(/[^/]+$/g)[0]))
+  return array.map(i => i.link.split('/')[i.link.split('/').length - 1])
+}
+
+function parseBib (res) {
+  // each data is an item's marc record, in json format.
+  // we only want the issn & title (from subfields)
+  const filteredObjs = res.data.fields.filter(obj => Object.keys(obj)[0] === '022')
+  const filteredObjsTitle = res.data.fields.filter(obj => Object.keys(obj)[0] === '245')
+  var issn, title
+  try {
+    issn = filteredObjs[0]['022'].subfields[0].a.replace(/-/g, '')
+  } catch (e) {
+    issn = null
+  };
+  try {
+    title = filteredObjsTitle[0]['245'].subfields[0].a
+  } catch (e) {
+    title = null
+  }
+  const obj = {}
+  obj.id = issn
+  obj.title = title
+  return obj
 }
 
 module.exports = {
