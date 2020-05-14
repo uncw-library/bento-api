@@ -3,7 +3,7 @@ const libcatController = rewire('../controllers/libcat')
 
 const extract = libcatController.__get__('extract')
 
-describe('extract tries to pull the expected data from an unreliable source', () => {
+describe('extract tries to pull the expected data from the html', () => {
   test('govdocs example', () => {
     const bundle = [
       {
@@ -55,7 +55,7 @@ describe('extract tries to pull the expected data from an unreliable source', ()
 </script>
 <script type="text/javascript" src="/scripts/elcontent.js">
 </script>
-a
+
 <script>var trackOutboundLink = function(url) {   ga('send', 'event', 'outbound', 'click', url, {     'transport': 'beacon',     'hitCallback': function(){document.location = url;}   });}</script><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"><meta http-equiv="X-UA-Compatible" content="IE=8;FF=3;OtherUA=4"><link rel="stylesheet" type="text/css" href="/screens/styles_print.css" media="print"><script type="text/javascript" src="/screens/bibdisplay.js"></script><link rel="stylesheet" type="text/css" href="/screens/sms.css" /><script type=”text/javascript” src='/screens/sms.js'></script><script type=”text/javascript” src='/screens/jquery_mods.js'></script><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script><script>$(document).ready(function(){var url=$(".bibLinks a").attr("href");var outbound=$(".bibLinks a").attr("onclick");var check=outbound.substring(0,11);var scooter="trackOutboundLink('"+url+"');";if (check=="window.open"){$(".bibLinks a").attr("onclick",scooter);$(".bibLinks a[href^='http://']").attr("target","_blank");} });</script>
 </head>
 <body bgcolor="#FFFFFF" >
@@ -515,9 +515,12 @@ name="save" value="b2413017" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&1%2C1%2C">Hi-Tech Bed Systems Corporation</a></h2>
-<br >
-United States. Government Accountability Office<br >
-Washington, D.C. : U.S. Govt. Accountability Office, [2012]
+<div class="author">
+United States. Government Accountability Office</div>
+
+<div class="citation">
+Washington, D.C. : U.S. Govt. Accountability Office, [2012]</div>
+
   <!--{year}-->
 
 
@@ -616,9 +619,12 @@ name="save" value="b2291465" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&2%2C2%2C">Proceedings of the Workshop on At-sea Detection and Removal of Derelict Fishing Gear, December 9-10, 2008, Honolulu, HI, USA</a></h2>
-<br >
-Workshop on At-sea Detection and Removal of Derelict Fishing Gear (2008 : Honolulu, Hawaii)<br >
-Silver Spring, MD : U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Ocean Service, Office of Response & Restoration, Marine Debris Division, [2010]
+<div class="author">
+Workshop on At-sea Detection and Removal of Derelict Fishing Gear (2008 : Honolulu, Hawaii)</div>
+
+<div class="citation">
+Silver Spring, MD : U.S. Department of Commerce, National Oceanic and Atmospheric Administration, National Ocean Service, Office of Response & Restoration, Marine Debris Division, [2010]</div>
+
   <!--{year}-->
 
 
@@ -717,9 +723,12 @@ name="save" value="b2917078" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&3%2C3%2C">Hi-Grouse environmental justice</a></h2>
-<br >
-Pfeiffer, Lois J., author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010
+<div class="author">
+Pfeiffer, Lois J., author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
+
   <!--{year}-->
 
 
@@ -818,9 +827,12 @@ name="save" value="b2917107" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&4%2C4%2C">Biological evaluation for the Hi-Grouse forest management project : Goosenest Ranger District, Klamath National Forest</a></h2>
-<br >
-Oechsner, Marynell, author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010
+<div class="author">
+Oechsner, Marynell, author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
+
   <!--{year}-->
 
 
@@ -919,9 +931,12 @@ name="save" value="b2917108" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&5%2C5%2C">Migratory bird and deer analysis for the Hi-Grouse forest management project : Goosenest Ranger District, Klamath National Forest</a></h2>
-<br >
-Oechsner, Marynell, author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010
+<div class="author">
+Oechsner, Marynell, author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
+
   <!--{year}-->
 
 
@@ -1020,9 +1035,12 @@ name="save" value="b2917114" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&6%2C6%2C">Biological assessment for the Hi-Grouse forest management project : Goosenest Ranger District, Klamath National Forest / prepared by Marynell Oechsner ; reviewed by Christy Cheyne [and] Laura Allen</a></h2>
-<br >
-Oechsner, Marynell, author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010
+<div class="author">
+Oechsner, Marynell, author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2010</div>
+
   <!--{year}-->
 
 
@@ -1121,9 +1139,12 @@ name="save" value="b2917071" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&7%2C7%2C">Hi-Grouse Project : air quality report</a></h2>
-<br >
-Pfeiffer, Lois J., author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009
+<div class="author">
+Pfeiffer, Lois J., author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
+
   <!--{year}-->
 
 
@@ -1222,9 +1243,12 @@ name="save" value="b2917074" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&8%2C8%2C">Hi-Grouse Project : biological assessment/evaluation for threatened, endangered, proposed, and sensitive plant species</a></h2>
-<br >
-Baker, Blaze, author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009
+<div class="author">
+Baker, Blaze, author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
+
   <!--{year}-->
 
 
@@ -1323,9 +1347,12 @@ name="save" value="b2917077" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&9%2C9%2C">[Hi-Grouse Project cultural resource]</a></h2>
-<br >
-Goetz, Jeanne, author<br >
-[Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009
+<div class="author">
+Goetz, Jeanne, author</div>
+
+<div class="citation">
+[Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009</div>
+
   <!--{year}-->
 
 
@@ -1424,9 +1451,12 @@ name="save" value="b2917079" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&10%2C10%2C">Hi-Grouse forest management project : fire and fuels report</a></h2>
-<br >
-Helmbrecht, Donald J., author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009
+<div class="author">
+Helmbrecht, Donald J., author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
+
   <!--{year}-->
 
 
@@ -1525,9 +1555,12 @@ name="save" value="b2917080" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&11%2C11%2C">Hi-Grouse Project : recreation report</a></h2>
-<br >
-Desser, Rochelle, author<br >
-[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009
+<div class="author">
+Desser, Rochelle, author</div>
+
+<div class="citation">
+[Yreka, California?] : U.S. Department of Agriculture, Forest Service, 2009</div>
+
   <!--{year}-->
 
 
@@ -1626,9 +1659,12 @@ name="save" value="b2917081" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&SORT=D&b=wd/X(hi)&SORT=D&b=wd&SUBKEY=(hi)/1%2C67%2C67%2CB/frameset&FF=X(hi)&SORT=D&b=wd&12%2C12%2C">Report on survey and manage species for the Hi-Grouse forest management project</a></h2>
-<br >
-<br >
-[Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009
+<div class="author">
+</div>
+
+<div class="citation">
+[Yreka, California?] : [U.S. Department of Agriculture, Forest Service], 2009</div>
+
   <!--{year}-->
 
 
@@ -1836,6 +1872,7 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 
 </body>
 </html>
+
 `
     expect(extract(html)).toEqual(bundle)
   })
@@ -2189,7 +2226,6 @@ return false;
 <a href="/search~S4/X?NOSRCH=(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)"><span class="button"><img src="/screens/ico_magnifyingglass_modify.gif" alt=""><span class="buttonText">Modify Search</span></span></a>
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&amp;searchscope=4&amp;SORT=D&amp;m=a&amp;m=c&amp;m=h&amp;b=wg&amp;b=wj&amp;b=wr&amp;b=wf&amp;b=wh&amp;b=wb&amp;b=wc&amp;b=we&amp;b=wi&amp;b=wl&amp;b=wn&amp;b=ws&amp;b=wu&amp;b=wv&amp;b=eb">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
@@ -2362,9 +2398,12 @@ name="save" value="b2499425" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&1%2C1%2C">Hi, Koo! : a year of seasons</a></h2>
-<br >
-Muth, Jon J<br >
-New York : Scholastic Press, 2014
+<div class="author">
+Muth, Jon J</div>
+
+<div class="citation">
+New York : Scholastic Press, 2014</div>
+
   <!--{year}-->
 
 
@@ -2488,9 +2527,12 @@ name="save" value="b2431836" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&2%2C2%2C">Hi-lo comprehension-building passages : mini-mysteries : 15 reproducible passages with comprehension questions that  guide students to infer, visualize, summarize, predict, and more</a></h2>
-<br >
-Doyle, Bill H., 1968-<br >
-New York : Scholastic, c2013
+<div class="author">
+Doyle, Bill H., 1968-</div>
+
+<div class="citation">
+New York : Scholastic, c2013</div>
+
   <!--{year}-->
 
 
@@ -2608,9 +2650,12 @@ name="save" value="b2452350" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&3%2C3%2C">Managing creativity in science and hi-tech</a></h2>
-<br >
-Kay, Ronald, Dr<br >
-Berlin ; London : Springer, 2012
+<div class="author">
+Kay, Ronald, Dr</div>
+
+<div class="citation">
+Berlin ; London : Springer, 2012</div>
+
   <!--{year}-->
 
 
@@ -2709,9 +2754,12 @@ name="save" value="b2706290" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&4%2C4%2C">Hi Iþm ... Pirate</a></h2>
-<br >
-Lopetegui, José A<br >
-[Álava] : Editorial Saure, [2011]
+<div class="author">
+Lopetegui, José A</div>
+
+<div class="citation">
+[Álava] : Editorial Saure, [2011]</div>
+
   <!--{year}-->
 
 
@@ -2810,9 +2858,12 @@ name="save" value="b2651851" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&5%2C5%2C">Hi-de-ho the life of Cab Calloway</a></h2>
-<br >
-Shipton, Alyn<br >
-Oxford : Oxford University Press, 2010
+<div class="author">
+Shipton, Alyn</div>
+
+<div class="citation">
+Oxford : Oxford University Press, 2010</div>
+
   <!--{year}-->
 
 
@@ -2911,9 +2962,12 @@ name="save" value="b2625551" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&6%2C6%2C">Liam says "Hi" learning to greet a friend</a></h2>
-<br >
-Banks, Jane Whelen<br >
-London ; Philadelphia, PA : Jessica Kingsley Publishers, 2009
+<div class="author">
+Banks, Jane Whelen</div>
+
+<div class="citation">
+London ; Philadelphia, PA : Jessica Kingsley Publishers, 2009</div>
+
   <!--{year}-->
 
 
@@ -3012,9 +3066,12 @@ name="save" value="b2225280" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&7%2C7%2C">Tales of hi and bye greeting and parting rituals around the world</a></h2>
-<br >
-Lundmark, Torbjörn<br >
-Cambridge ; Port Melbourne : Cambridge University Press, 2009
+<div class="author">
+Lundmark, Torbjörn</div>
+
+<div class="citation">
+Cambridge ; Port Melbourne : Cambridge University Press, 2009</div>
+
   <!--{year}-->
 
 
@@ -3113,9 +3170,12 @@ name="save" value="b2623355" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&8%2C8%2C">Library hi tech. Volume 26, Number 1, Information orgnaization futures</a></h2>
-<br >
-<br >
-[Bradford, England] : Emerald, 2008
+<div class="author">
+</div>
+
+<div class="citation">
+[Bradford, England] : Emerald, 2008</div>
+
   <!--{year}-->
 
 
@@ -3214,9 +3274,12 @@ name="save" value="b2620715" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&9%2C9%2C">Library hi tech. Volume 25, Number 4, Special sections on accessibility [and] OPAC</a></h2>
-<br >
-<br >
-Bradford : Emerald Insight, c2007
+<div class="author">
+</div>
+
+<div class="citation">
+Bradford : Emerald Insight, c2007</div>
+
   <!--{year}-->
 
 
@@ -3315,9 +3378,12 @@ name="save" value="b2221899" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&10%2C10%2C">Hi-lo nonfiction passages for struggling readers : 80 high-interest/low-readability passages with comprehension questions and mini-lessons for teaching key reading strategies</a></h2>
-<br >
-<br >
-New York : Scholastic, c2006
+<div class="author">
+</div>
+
+<div class="citation">
+New York : Scholastic, c2006</div>
+
   <!--{year}-->
 
 
@@ -3435,9 +3501,12 @@ name="save" value="b2019981" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&11%2C11%2C">Hi! Fly Guy</a></h2>
-<br >
-Arnold, Tedd<br >
-New York : Scholastic, c2005
+<div class="author">
+Arnold, Tedd</div>
+
+<div class="citation">
+New York : Scholastic, c2005</div>
+
   <!--{year}-->
 
 
@@ -3561,9 +3630,12 @@ name="save" value="b2596334" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb/X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)/1%2C226%2C226%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&12%2C12%2C">Library hi tech. Vol. 23, No. 1, UNLV libraries : four years later (part 1)</a></h2>
-<br >
-<br >
-Bradford, England : Emerald Group Publishing, c2005
+<div class="author">
+</div>
+
+<div class="citation">
+Bradford, England : Emerald Group Publishing, c2005</div>
+
   <!--{year}-->
 
 
@@ -3728,7 +3800,6 @@ Result Page&nbsp;&nbsp;&nbsp;<strong>1</strong>
 <a href="/search~S4/X?NOSRCH=(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&SUBKEY=(hi)"><span class="button"><img src="/screens/ico_magnifyingglass_modify.gif" alt=""><span class="buttonText">Modify Search</span></span></a>
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&amp;searchscope=4&amp;SORT=D&amp;m=a&amp;m=c&amp;m=h&amp;b=wg&amp;b=wj&amp;b=wr&amp;b=wf&amp;b=wh&amp;b=wb&amp;b=wc&amp;b=we&amp;b=wi&amp;b=wl&amp;b=wn&amp;b=ws&amp;b=wu&amp;b=wv&amp;b=eb">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
@@ -3780,6 +3851,7 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 
 </body>
 </html>
+
 `
     expect(extract(html)).toEqual(bundle)
   })
@@ -4134,7 +4206,6 @@ return false;
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&amp;searchscope=4&amp;SORT=D&amp;m=a&amp;m=c&amp;m=h&amp;b=wg&amp;b=wj&amp;b=wr&amp;b=wf&amp;b=wh&amp;b=wb&amp;b=wc&amp;b=we&amp;b=wi&amp;b=wl&amp;b=wn&amp;b=ws&amp;b=wu&amp;b=wv&amp;b=eb">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
@@ -4304,9 +4375,12 @@ name="save" value="b3010453" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&1%2C1%2C">Hi-Tech Tattoo For Your Workouts</a></h2>
-<br >
-<br >
-New York, N.Y. : Infobase, [2014], c2013
+<div class="author">
+</div>
+
+<div class="citation">
+New York, N.Y. : Infobase, [2014], c2013</div>
+
   <!--{year}-->
 
 
@@ -4405,9 +4479,12 @@ name="save" value="b2134978" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&2%2C2%2C">Anyay hi anyay</a></h2>
-<br >
-<br >
-Mumbai, India : Star Entertainment, [2000?]
+<div class="author">
+</div>
+
+<div class="citation">
+Mumbai, India : Star Entertainment, [2000?]</div>
+
   <!--{year}-->
 
 
@@ -4525,9 +4602,12 @@ name="save" value="b3255601" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&3%2C3%2C">Delegate to Congress Joseph R. Farrington (R-HI) (1953)</a></h2>
-<br >
-<br >
-[United States] : Columbia Broadcasting System, 1953
+<div class="author">
+</div>
+
+<div class="citation">
+[United States] : Columbia Broadcasting System, 1953</div>
+
   <!--{year}-->
 
 
@@ -4626,9 +4706,12 @@ name="save" value="b3255860" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&4%2C4%2C">Delegate to Congress Joseph R. Farrington (R-HI) (1952)</a></h2>
-<br >
-<br >
-[United States] : Columbia Broadcasting System, 1952
+<div class="author">
+</div>
+
+<div class="citation">
+[United States] : Columbia Broadcasting System, 1952</div>
+
   <!--{year}-->
 
 
@@ -4729,9 +4812,12 @@ name="save" value="b3236343" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&5%2C5%2C">MIRA Rehab a tale of hi-tech physiotherapy</a></h2>
-<br >
-Mihaiu, Cosmin, (MIRA Rehab, UK)<br >
-London : Henry Stewart Talks, 2017
+<div class="author">
+Mihaiu, Cosmin, (MIRA Rehab, UK)</div>
+
+<div class="citation">
+London : Henry Stewart Talks, 2017</div>
+
   <!--{year}-->
 
 
@@ -4830,9 +4916,12 @@ name="save" value="b2468125" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&6%2C6%2C">Chuyuso sŭpkyŏk sakŏn</a></h2>
-<br >
-<br >
-[New York] : Tokyo Shock, 2004
+<div class="author">
+</div>
+
+<div class="citation">
+[New York] : Tokyo Shock, 2004</div>
+
   <!--{year}-->
 
 
@@ -4950,9 +5039,12 @@ name="save" value="b1880912" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&7%2C7%2C">Whipped</a></h2>
-<br >
-<br >
-Culver City, Calif. : Columbia TriStar Home Video, c2000
+<div class="author">
+</div>
+
+<div class="citation">
+Culver City, Calif. : Columbia TriStar Home Video, c2000</div>
+
   <!--{year}-->
 
 
@@ -5070,9 +5162,12 @@ name="save" value="b1837503" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&8%2C8%2C">Steve Allen "Hi-ho Steverino"</a></h2>
-<br >
-<br >
-New York, NY : A&E Home Video, c1994
+<div class="author">
+</div>
+
+<div class="citation">
+New York, NY : A&E Home Video, c1994</div>
+
   <!--{year}-->
 
 
@@ -5190,9 +5285,12 @@ name="save" value="b3254163" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&9%2C9%2C">Little sister what colour flower are you wearing in your hair?</a></h2>
-<br >
-<br >
-London, England : Arts Council England, 1993
+<div class="author">
+</div>
+
+<div class="citation">
+London, England : Arts Council England, 1993</div>
+
   <!--{year}-->
 
 
@@ -5293,9 +5391,12 @@ name="save" value="b3346834" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&10%2C10%2C">Unspoken</a></h2>
-<br >
-<br >
-Video Project, 2018
+<div class="author">
+</div>
+
+<div class="citation">
+Video Project, 2018</div>
+
   <!--{year}-->
 
 
@@ -5394,9 +5495,12 @@ name="save" value="b3217403" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&11%2C11%2C">Military Medicine Beyond the Battle Field</a></h2>
-<br >
-<br >
-[Place of publication not identified] :  PBS,  [2016]
+<div class="author">
+</div>
+
+<div class="citation">
+[Place of publication not identified] :  PBS,  [2016]</div>
+
   <!--{year}-->
 
 
@@ -5495,9 +5599,12 @@ name="save" value="b3341760" >
 <!--{nohitmsg}-->
 <h2 class="briefcitTitle">
 <a href="/search~S4?/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev/X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&SUBKEY=(hi)/1%2C114%2C114%2CB/frameset&FF=X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&12%2C12%2C">Nazi Mega Weapons: Episode 3 - V2 Rocket</a></h2>
-<br >
-<br >
-[San Francisco, California, USA] : Kanopy Streaming, 2016
+<div class="author">
+</div>
+
+<div class="citation">
+[San Francisco, California, USA] : Kanopy Streaming, 2016</div>
+
   <!--{year}-->
 
 
@@ -5660,7 +5767,6 @@ Result Page&nbsp;&nbsp;&nbsp;<strong>1</strong>
 <select name=HISTORY onChange="onSelectChange(this, '~S4')"><option value="">(Search History)</option>
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb">KEYWORD: (hi)
-<OPTION VALUE="X(hi)&amp;searchscope=4&amp;SORT=D&amp;m=a&amp;m=c&amp;m=h&amp;b=wg&amp;b=wj&amp;b=wr&amp;b=wf&amp;b=wh&amp;b=wb&amp;b=wc&amp;b=we&amp;b=wi&amp;b=wl&amp;b=wn&amp;b=ws&amp;b=wu&amp;b=wv&amp;b=eb">KEYWORD: (hi)
 <OPTION VALUE="X(hi)&SORT=D&b=wd&searchscope=4">KEYWORD: (hi)
 <option value="+/search~S4/X?(hi)&searchscope=4&SORT=D&m=g&b=wa&b=ev&clear_history">(Clear Search History)</option>
 <option value="+/">(End Search Session)</option>
@@ -5712,6 +5818,7 @@ The InnovativeCredit span is now included in this un-displayed span and is invis
 
 </body>
 </html>
+
 `
     expect(extract(html)).toEqual(bundle)
   })

@@ -2,10 +2,10 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-const journalController = require('./controllers/journals')
 const cDMController = require('./controllers/cDM')
-const summonController = require('./controllers/summon')
+const journalController = require('./controllers/journals')
 const libcatController = require('./controllers/libcat')
+const summonController = require('./controllers/summon')
 
 /*
 app configuration
