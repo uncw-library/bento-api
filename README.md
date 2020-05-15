@@ -32,6 +32,7 @@ or
 
   - Make a file at "new-bento/.env" with contents:
 
+```
 SIERRA_API_KEY=Password
 BROWZINE_API_KEY=Password
 SIERRA_API_KEY=Password	
@@ -40,6 +41,7 @@ OCLC__wskey=Password
 SUMMON__api_id=Password
 SUMMON__api_key=Password
 NODE_ENV=development
+```
 
   - The actual Passwords can be found in the Rancher web interface:
 
