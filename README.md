@@ -5,14 +5,14 @@ This repo builds an API server at https://new-bento.libapps.uncw.edu/ used by ht
 
 The app accepts POST requests with a searchTerm at:
 
- - https://library.uncw.edu/search_randall/books-ebooks
- - https://library.uncw.edu/search_randall/contentdm
- - https://library.uncw.edu/search_randall/databases
- - https://library.uncw.edu/search_randall/govdocs  
- - https://library.uncw.edu/search_randall/journals
- - https://library.uncw.edu/search_randall/newsmags
- - https://library.uncw.edu/search_randall/scholarly
- - https://library.uncw.edu/search_randall/videos-music
+ - https://new-bento.libapps.uncw.edu/books-ebooks
+ - https://new-bento.libapps.uncw.edu/contentdm
+ - https://new-bento.libapps.uncw.edu/databases
+ - https://new-bento.libapps.uncw.edu/govdocs  
+ - https://new-bento.libapps.uncw.edu/journals
+ - https://new-bento.libapps.uncw.edu/newsmags
+ - https://new-bento.libapps.uncw.edu/scholarly
+ - https://new-bento.libapps.uncw.edu/videos-music
 
 The app queries sierra, contentDM, libcat, and browzine for items matching the search term.
 
