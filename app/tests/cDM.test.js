@@ -61,7 +61,7 @@ describe('enrich adds specific image:v into collection items', () => {
       }
     }
     const output = {
-      collections: {
+      items: {
         pager: { start: '1', maxrecs: '5', total: 52 },
         records: [
           {
@@ -75,7 +75,9 @@ describe('enrich adds specific image:v into collection items', () => {
             identi: 'BarefordWilliam2009',
             subjec: 'Motion picture plays--United States.; Honors paper (Department of Film Studies)',
             find: '438.pdf',
-            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/1082/thumbnail'
+            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/1082/thumbnail',
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/honors/id/1082'
+
           },
           {
             collection: '/honors',
@@ -88,7 +90,8 @@ describe('enrich adds specific image:v into collection items', () => {
             identi: 'PeacockAdrienneClaire2006',
             subjec: 'Dystopias in literature.; Honors paper (Department of English)',
             find: '1208.pdf',
-            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/500/thumbnail'
+            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/500/thumbnail',
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/honors/id/500'
           },
           {
             collection: '/oralhistory',
@@ -101,7 +104,8 @@ describe('enrich adds specific image:v into collection items', () => {
             identi: 'Interview_with_Victor_Smith_July_31_2007.pdf',
             subjec: '',
             find: '209.pdf',
-            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/oralhistory/id/208/thumbnail'
+            image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/oralhistory/id/208/thumbnail',
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/oralhistory/id/208'
           }
         ]
       }
