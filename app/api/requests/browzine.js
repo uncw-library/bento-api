@@ -1,7 +1,7 @@
 const axios = require('axios')
 const keys = require('../keys')
 
-function search (issn, title, recordNum, next) {
+function search (title, issn, recordNum, next) {
   const url = `https://public-api.thirdiron.com/public/v1/libraries/1552/search?issns=${issn}`
   const headers = { headers: { Authorization: `Bearer ${keys.browzine}` } }
 
@@ -10,7 +10,8 @@ function search (issn, title, recordNum, next) {
       browzine: res.data.data,
       title,
       link: `http://libcat.uncw.edu/record=b${recordNum}~S4`,
-      issn
+      issn,
+      recordNum
     }
     ))
     .catch(next)
