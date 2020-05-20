@@ -76,7 +76,7 @@ describe('enrich adds specific image:v into collection items', () => {
             subjec: 'Motion picture plays--United States.; Honors paper (Department of Film Studies)',
             find: '438.pdf',
             image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/1082/thumbnail',
-            itemUrl: "https://digitalcollections.uncw.edu/digital/collection/honors/id/1082"
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/honors/id/1082'
 
           },
           {
@@ -91,7 +91,7 @@ describe('enrich adds specific image:v into collection items', () => {
             subjec: 'Dystopias in literature.; Honors paper (Department of English)',
             find: '1208.pdf',
             image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/honors/id/500/thumbnail',
-            itemUrl: "https://digitalcollections.uncw.edu/digital/collection/honors/id/500"
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/honors/id/500'
           },
           {
             collection: '/oralhistory',
@@ -105,7 +105,7 @@ describe('enrich adds specific image:v into collection items', () => {
             subjec: '',
             find: '209.pdf',
             image: 'http://digitalcollections.uncw.edu/digital/api/singleitem/collection/oralhistory/id/208/thumbnail',
-            itemUrl: "https://digitalcollections.uncw.edu/digital/collection/oralhistory/id/208"
+            itemUrl: 'https://digitalcollections.uncw.edu/digital/collection/oralhistory/id/208'
           }
         ]
       }
