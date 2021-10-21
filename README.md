@@ -1,18 +1,20 @@
 
-## New Bento API server
+## Bento API server (for drupal 9)
 
-This repo builds an API server at https://new-bento.libapps.uncw.edu/ used by https://library.uncw.edu/search_randall/
+This repo builds an API server living at https://bento-api.libapps-staff.uncw.edu 
 
-The app accepts POST requests with a searchTerm at:
+The app accepts POST requests with body like {"searchTerm": "whatever"}:
 
- - https://new-bento.libapps.uncw.edu/books-ebooks
- - https://new-bento.libapps.uncw.edu/contentdm
- - https://new-bento.libapps.uncw.edu/databases
- - https://new-bento.libapps.uncw.edu/govdocs  
- - https://new-bento.libapps.uncw.edu/journals
- - https://new-bento.libapps.uncw.edu/newsmags
- - https://new-bento.libapps.uncw.edu/scholarly
- - https://new-bento.libapps.uncw.edu/videos-music
+Endpoints:
+
+ - https://bento-api.libapps-staff.uncw.edu/books-ebooks
+ - https://bento-api.libapps-staff.uncw.edu/contentdm
+ - https://bento-api.libapps-staff.uncw.edu/databases
+ - https://bento-api.libapps-staff.uncw.edu/govdocs  
+ - https://bento-api.libapps-staff.uncw.edu/journals
+ - https://bento-api.libapps-staff.uncw.edu/newsmags
+ - https://bento-api.libapps-staff.uncw.edu/scholarly
+ - https://bento-api.libapps-staff.uncw.edu/videos-music
 
 The app queries sierra, contentDM, libcat, and browzine for items matching the search term.
 
@@ -21,12 +23,12 @@ It returns a JSON of matches.
 #### Example:
 
   POST a request from the command line with:
-  
-`curl --data "searchTerm=hi" "https://new-bento.libapps.uncw.edu/journals"`
 
-or
+in bash:  
+`curl --data "searchTerm=science" "https://bento-api.libapps-staff.uncw.edu/journals"`
 
-`curl --data "searchTerm=hi" "http://localhost:8010/journals"`
+in powershell:
+`Invoke-WebRequest -Method POST -Body "searchTerm=science" -OutFile response.json -Uri https://bento-api.libapps-staff.uncw.edu/scholarly`
 
 ### To build a dev box
 
@@ -62,7 +64,7 @@ docker-compose up --build
 
 ```
 curl "http://localhost:8010/"
-curl --data "searchTerm=hi" "http://localhost:8010/journals"
+curl --data "searchTerm=science" "http://localhost:8010/journals"
 ```
 
 #### To run tests on dev box
@@ -78,6 +80,6 @@ curl --data "searchTerm=hi" "http://localhost:8010/journals"
 
 ```
 docker login libapps-admin.uncw.edu:8000
-docker build -t libapps-admin.uncw.edu:8000/randall-dev/new-bento .
-docker push libapps-admin.uncw.edu:8000/randall-dev/new-bento
+docker build -t libapps-admin.uncw.edu:8000/randall-dev/bento-api .
+docker push libapps-admin.uncw.edu:8000/randall-dev/bento-api
 ```
