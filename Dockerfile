@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:17-alpine
 
 RUN apk update && \
   apk upgrade && \
@@ -15,8 +15,7 @@ RUN npm install
 
 COPY --chown=node:node app/ ./app
 WORKDIR /usr/src/app/
-# RUN find . -type d -exec chmod 755 {} \; \
-# 	& find . -type f -exec chmod 644 {} \;
 
 EXPOSE 3000
+
 CMD npm start

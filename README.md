@@ -35,8 +35,6 @@ in powershell:
   - Make a file at "new-bento/.env" with contents:
 
 ```
-SIERRA_API_KEY=Password
-BROWZINE_API_KEY=Password
 SIERRA_API_KEY=Password	
 BROWZINE_API_KEY=Password
 OCLC__wskey=Password
@@ -67,19 +65,43 @@ curl "http://localhost:8010/"
 curl --data "searchTerm=science" "http://localhost:8010/journals"
 ```
 
-#### To run tests on dev box
+returns {
+  total: **number of matches found**,
+  selection: \[
+    {
+      title: **item title**,
+      author: **item author**,
+      citation: **item date**,
+      url: **item url**,
+      image: **item image url**,
+      date: **publication date**,
+      (sometimes other stuff or different for each endpoint -- sorry for not getting it consistent yet)
+    },
+    **etc for first 5 items**
+  \]
+}
 
-  - `docker-compose exec bento npm run test`
 
-#### To lint the dev box
+### updating
 
-  - `docker-compose exec bento npx eslint .`
+```
+npm install
+npm audit
+```
+
+### linting
+
+```
+npm install
+npx standard
+```
+
 
 
 ### To build a prod box
 
 ```
 docker login libapps-admin.uncw.edu:8000
-docker build -t libapps-admin.uncw.edu:8000/randall-dev/bento-api .
+docker build --no-cache --platform linux/x86_64/v8 -t libapps-admin.uncw.edu:8000/randall-dev/bento-api .
 docker push libapps-admin.uncw.edu:8000/randall-dev/bento-api
 ```

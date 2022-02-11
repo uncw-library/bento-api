@@ -3,7 +3,7 @@ const browzineApi = require('../api/requests/browzine')
 
 async function search (searchTerm, next) {
   const token = (await sierraApi.authenticate(next))
-  const recordNums = (await sierraApi.searchJournals(token, searchTerm, next))
+  const [recordNums, totalCount] = (await sierraApi.searchJournals(token, searchTerm, next))
 
   const enrichedRecords = (await Promise.all(
     recordNums.map(recordNum => sierraApi.getBibRecord(token, recordNum, next)
@@ -13,7 +13,11 @@ async function search (searchTerm, next) {
       })
     )
   ))
-  return enrichedRecords
+  const bundle = {
+    total: totalCount,
+    selection: enrichedRecords
+  }
+  return bundle
 }
 
 function parseBib (res) {
@@ -21,7 +25,7 @@ function parseBib (res) {
   // we only want the issn & title (from subfields)
   const issnObjs = res.data.fields.filter(obj => Object.keys(obj)[0] === '022')
   const titleObjs = res.data.fields.filter(obj => Object.keys(obj)[0] === '245')
-  var issn, title
+  let issn, title
   try {
     issn = issnObjs[0]['022'].subfields[0].a.replace(/-/g, '')
   } catch (e) {

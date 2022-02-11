@@ -5,10 +5,10 @@ const keys = require('../keys')
 helper functions
 */
 
-function parseRecordNums (links) {
+function parseRecordNums (links, totalCount) {
   // was: return links.map(i => i.link.match(/[^/]+$/g)[0]))
-  const recordNums = links.map(i => i.link.split('/')[i.link.split('/').length - 1])
-  return recordNums
+  const selection = links.map(i => i.link.split('/')[i.link.split('/').length - 1])
+  return [selection, totalCount]
 }
 
 /*
@@ -25,8 +25,17 @@ function authenticate (next) {
     .catch(next)
 }
 
-function searchJournals (token, term, next) {
-  const url = 'https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=3'
+async function searchJournals (token, term, next) {
+  // magic number is limit of items to search
+  const totalCount = (await fetchJournals(token, term, 5000, next)
+    .then(res => res.data.total))
+  return fetchJournals(token, term, 5, next)
+    .then(res => parseRecordNums(res.data.entries, totalCount))
+    .catch(next)
+}
+
+async function fetchJournals (token, term, limit, next) {
+  const url = `https://libcat.uncw.edu:443/iii/sierra-api/v5/bibs/query?offset=0&suppressed=false&limit=${limit}`
   const data = {
     queries: [{
       target: { record: { type: 'bib' }, id: 31 }, expr: { op: 'equals', operands: ['-', ''] }
@@ -37,8 +46,6 @@ function searchJournals (token, term, next) {
   const headers = { headers: { Authorization: `Bearer ${token}` } }
 
   return axios.post(url, data, headers)
-    .then(res => parseRecordNums(res.data.entries))
-    .catch(next)
 }
 
 function getBibRecord (token, id, next) {

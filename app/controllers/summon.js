@@ -32,23 +32,25 @@ async function search (searchTerm, searchType, next) {
   const query = sorted.join('&')
   const results = (await summonApi.search(query, next))
   const trimmed = trimResults(results)
-  return await trimmed
+  const formatted = format(results.recordCount, trimmed)
+  return await formatted
 }
 
 function trimResults (results) {
   const trimmedItems = []
   for (const doc of Object.values(results.documents)) {
     const trimmedItem = {
+      title: getNestedObject(doc, ['Title', '0']),
+      author: truncateAuthors({
+        authorList: getNestedObject(doc, ['Author'])
+      }),
       date: formatDate({
         year: getNestedObject(doc, ['PublicationDate_xml', '0', 'year']),
         month: getNestedObject(doc, ['PublicationDate_xml', '0', 'month']),
         day: getNestedObject(doc, ['PublicationDate_xml', '0', 'day'])
       }),
-      authors: truncateAuthors({
-        authorList: getNestedObject(doc, ['Author'])
-      }),
-      link: getNestedObject(doc, ['link']),
-      title: getNestedObject(doc, ['Title', '0']),
+      url: getNestedObject(doc, ['link']),
+      image: '',
       subtitle: getNestedObject(doc, ['Subtitle', '0']),
       publication: getNestedObject(doc, ['PublicationTitle', '0']),
       vol: getNestedObject(doc, ['Volume', '0']),
@@ -115,6 +117,14 @@ function formatDate (yearMonthDay) {
 function getNestedObject (nestedObj, pathArr) {
   return pathArr.reduce((obj, key) =>
     (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+}
+
+function format (total, trimmed) {
+  const bundle = {
+    total: total,
+    selection: trimmed
+  }
+  return bundle
 }
 
 module.exports.search = search

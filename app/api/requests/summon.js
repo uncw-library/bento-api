@@ -12,8 +12,8 @@ async function search (query, next) {
   const hash = hmac.update(id)
   const digest = hash.digest('base64')
 
-  var url = `http://${host}${path}?${query}`
-  var headers = {
+  const url = `http://${host}${path}?${query}`
+  const headers = {
     headers: {
       Accept: accept,
       'x-summon-date': date,
