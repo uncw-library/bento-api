@@ -37,6 +37,7 @@ async function search (searchTerm, searchType, next) {
 }
 
 function trimResults (results) {
+  // "" is default value if a doc is missing a field
   const trimmedItems = []
   for (const doc of Object.values(results.documents)) {
     const trimmedItem = {
@@ -111,12 +112,14 @@ function formatDate (yearMonthDay) {
     } else {
       return `${year}`
     }
+  } else {
+    return ''
   }
 }
 
 function getNestedObject (nestedObj, pathArr) {
   return pathArr.reduce((obj, key) =>
-    (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+    (obj && obj[key] !== 'undefined') ? obj[key] : '', nestedObj)
 }
 
 function format (total, trimmed) {
