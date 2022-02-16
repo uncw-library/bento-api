@@ -37,8 +37,8 @@ app.post('/contentdm', async (req, res, next) => {
   res.json(await cDMController.search(req.body.searchTerm, next))
 })
 
-app.post('/databases', async (req, res, next) => {
-  res.json({ message: 'not yet implemented' })
+app.post('/datasets', async (req, res, next) => {
+  res.json(await summonController.search(req.body.searchTerm, 'datasets', next))
 })
 
 app.post('/govdocs', async (req, res, next) => {

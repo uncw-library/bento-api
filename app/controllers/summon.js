@@ -24,6 +24,16 @@ async function search (searchTerm, searchType, next) {
       's.pn=0',
       's.ps=5',
       `s.q=${searchTerm}`
+    ],
+    datasets: [
+      's.fvf=IsFullText,true',
+      's.fvf=ContentType,Data Set',
+      's.hl=false',
+      's.ho=true',
+      's.l=en',
+      's.pn=0',
+      's.ps=5',
+      `s.q=${searchTerm}`
     ]
   }
 
