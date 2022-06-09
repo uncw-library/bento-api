@@ -14,7 +14,7 @@ function makeURL (searchTerm, searchType) {
   } else if (searchType === 'govdocs') {
     return `http://libcat.uncw.edu/search~S4/X?SEARCH=(${searchTerm})&SORT=D&b=wd`
   } else if (searchType === 'videos-music') {
-    return `http://libcat.uncw.edu/search/X?SEARCH=(${searchTerm})&searchscope=4&SORT=D&m=g&b=wa&b=ev`
+    return `http://libcat.uncw.edu/search/X?SEARCH=(${searchTerm})&searchscope=4&SORT=D&m=g&m=j&m=n&b=ev&b=wa`
   }
 }
 
@@ -22,7 +22,7 @@ function extract (html, currentUrl) {
   // cheerio works like jQuery, for parsing an html structure
   const $ = cheerio.load(html)
   const pageType = whatPageType($)
-
+  console.log(pageType)
   // pageType will be 'singleItem' or 'multiItem'
   // a singleItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=%22Zero+to+maker+%3A+learn+%28just+enough%29+to+make+%28just+about%29+anything%22&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=X%22zero+to+maker%22%26SORT%3DDZ
   // a multiItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=hi&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=Xhi%26SORT%3DDZ
@@ -85,8 +85,9 @@ function extract (html, currentUrl) {
 }
 
 function whatPageType ($) {
-  const elemOnlyOnSnglePage = $('.bibDisplayJacket')
-  if (elemOnlyOnSnglePage.length === 1) {
+  const elemOnlyOnSinglePage = $('.bibInfoData')
+  console.log(elemOnlyOnSinglePage)
+  if (elemOnlyOnSinglePage.length) {
     return 'singleItem'
   }
   return 'multiItem'
