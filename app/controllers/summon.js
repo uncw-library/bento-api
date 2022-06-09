@@ -134,7 +134,7 @@ function getNestedObject (nestedObj, pathArr) {
 
 function format (total, trimmed) {
   const bundle = {
-    total: total,
+    total,
     selection: trimmed
   }
   return bundle

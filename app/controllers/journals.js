@@ -36,7 +36,7 @@ function parseBib (res) {
   } catch (e) {
     title = null
   }
-  return { issn: issn, title: title }
+  return { issn, title }
 }
 
 module.exports.search = search
