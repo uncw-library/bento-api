@@ -1,4 +1,4 @@
-FROM node:17-alpine
+FROM amd64/node:18-alpine
 
 RUN apk update && \
   apk upgrade && \
