@@ -1,10 +1,13 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 
+const oclc = require('../api/requests/oclc')
+
 async function search (searchTerm, searchType, next) {
   const url = makeURL(searchTerm, searchType)
   return await axios.get(url)
     .then(res => extract(res.data, url))
+    .then(bundle => doWorldcatIfEmpty(bundle, searchTerm, searchType))
     .catch(next)
 }
 
@@ -22,7 +25,6 @@ function extract (html, currentUrl) {
   // cheerio works like jQuery, for parsing an html structure
   const $ = cheerio.load(html)
   const pageType = whatPageType($)
-  console.log(pageType)
   // pageType will be 'singleItem' or 'multiItem'
   // a singleItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=%22Zero+to+maker+%3A+learn+%28just+enough%29+to+make+%28just+about%29+anything%22&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=X%22zero+to+maker%22%26SORT%3DDZ
   // a multiItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=hi&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=Xhi%26SORT%3DDZ
@@ -86,7 +88,6 @@ function extract (html, currentUrl) {
 
 function whatPageType ($) {
   const elemOnlyOnSinglePage = $('.bibInfoData')
-  console.log(elemOnlyOnSinglePage)
   if (elemOnlyOnSinglePage.length) {
     return 'singleItem'
   }
@@ -99,6 +100,15 @@ function makeMultiPageTotal ($) {
     return totalFullPage
   }
   return '0'
+}
+
+async function doWorldcatIfEmpty (bundle, searchTerm, searchType) {
+  // if bundle has any items, the bundle is fine & can be sent forward
+  // if (parseInt(bundle.total) > 0) {
+  //   return bundle
+  // }
+  const worldcatItems = await oclc.search(searchTerm, searchType)
+  return worldcatItems
 }
 
 module.exports.search = search
