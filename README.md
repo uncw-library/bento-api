@@ -40,7 +40,6 @@ BROWZINE_API_KEY=Password
 OCLC__wskey=Password
 SUMMON__api_id=Password
 SUMMON__api_key=Password
-NODE_ENV=development
 ```
 
   - The actual Passwords can be found in the Rancher web interface:
@@ -78,9 +77,20 @@ returns {
       (sometimes other stuff or different for each endpoint -- sorry for not getting it consistent yet)
     },
     **etc for first 5 items**
+  \],
+  worldcat: \[
+    title: **item title**,
+    author: **item author**,
+    isbn: **item isbn number**,
+    oclc: **item oclc number**,
+    publisher: **item publisher**,
+    pubDate: **publication date**,
+    illiadUrl: **url to an illiad request form**,
+    worldcatUrl: **url to item detail page in worldcat**
   \]
 }
 
+Either "selection:" or "worldcat:" will be empty.  Some endpoints do not get a "worldcat" option.
 
 ### updating
 

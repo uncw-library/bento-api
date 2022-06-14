@@ -51,8 +51,6 @@ async function makeTwoGoodItems (rss) {
       pubDate: '',
       resourceType: '',
       illiadUrl: '',
-      // nhcUrl: '',
-      // cfccUrl: '',
       worldcatUrl: rssItem.link || ''
     }
 
@@ -61,8 +59,8 @@ async function makeTwoGoodItems (rss) {
     }
 
     // get author
-    if (rssItem.author) {
-      parsed.author = rssItem.author.name || ''
+    if (rssItem.author && rssItem.author.name) {
+      parsed.author = rssItem.author.name[0] || ''
     }
 
     // get isbn
