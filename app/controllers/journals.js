@@ -15,6 +15,7 @@ async function search (searchTerm, next) {
   ))
   const bundle = {
     total: totalCount,
+    searchTerm,
     selection: enrichedRecords
   }
   return bundle

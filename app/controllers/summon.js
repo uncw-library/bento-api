@@ -42,7 +42,7 @@ async function search (searchTerm, searchType, next) {
   const query = sorted.join('&')
   const results = (await summonApi.search(query, next))
   const trimmed = trimResults(results)
-  const formatted = format(results.recordCount, trimmed)
+  const formatted = format(results.recordCount, trimmed, searchTerm)
   return await formatted
 }
 
@@ -132,9 +132,10 @@ function getNestedObject (nestedObj, pathArr) {
     (obj && obj[key] !== 'undefined') ? obj[key] : '', nestedObj)
 }
 
-function format (total, trimmed) {
+function format (total, trimmed, searchTerm) {
   const bundle = {
     total,
+    searchTerm,
     selection: trimmed
   }
   return bundle

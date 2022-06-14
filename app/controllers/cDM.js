@@ -5,7 +5,7 @@ async function search (searchTerm, next) {
   const url = makeURL(searchTerm)
   return await axios.get(url)
     .then(res => enrich(res))
-    .then(enriched => format(enriched))
+    .then(enriched => format(enriched, searchTerm))
     .catch(next)
 }
 
@@ -25,9 +25,10 @@ function enrich (res) {
   return { items: res.data }
 }
 
-function format (enriched) {
+function format (enriched, searchTerm) {
   const bundle = {
     total: enriched.items.pager.total,
+    searchTerm,
     selection: enriched.items.records
   }
   return bundle

@@ -3,11 +3,25 @@ const cheerio = require('cheerio')
 
 const oclc = require('../api/requests/oclc')
 
+/*
+  This algorithm is the least worst option.
+  It'd be better to grab the search results from sierra as a db query or API call,
+    but those are very slow & complicated.
+    Also the sierra API & db queries don't have good results ranking.
+  The frontend sierra page does have good results ranking, is fast, and handles quotation marks & "AND"/"OR" etc.
+    So we're loading the sierra searchpage, then parsing the html for the <divs> we want.
+    This is fragile.  If the html changed <div class="newName"> then this app would break.
+    Also the logic in extract() is overcomplicated to make up for the messiness.
+  But it's the fast way & it's also gives the best results.
+  Maybe later sierra will make an API that gives this good data that we're having to scrape from the html.
+*/
+
 async function search (searchTerm, searchType, next) {
   const url = makeURL(searchTerm, searchType)
   return await axios.get(url)
     .then(res => extract(res.data, url))
     .then(bundle => doWorldcatIfEmpty(bundle, searchTerm, searchType))
+    .then(bundle => format(bundle, searchTerm))
     .catch(next)
 }
 
@@ -25,18 +39,22 @@ function extract (html, currentUrl) {
   // cheerio works like jQuery, for parsing an html structure
   const $ = cheerio.load(html)
   const pageType = whatPageType($)
-  // pageType will be 'singleItem' or 'multiItem'
-  // a singleItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=%22Zero+to+maker+%3A+learn+%28just+enough%29+to+make+%28just+about%29+anything%22&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=X%22zero+to+maker%22%26SORT%3DDZ
-  // a multiItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=hi&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=Xhi%26SORT%3DDZ
-
+  /*
+    pageType will be 'singleItem' or 'multiItem'
+    a singleItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=%22Zero+to+maker+%3A+learn+%28just+enough%29+to+make+%28just+about%29+anything%22&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=X%22zero+to+maker%22%26SORT%3DDZ
+    a multiItem example:  https://libcat.uncw.edu/search~S4/?searchtype=X&searcharg=hi&sortdropdown=-&SORT=DZ&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=Xhi%26SORT%3DDZ
+  */
   if (pageType === 'multiItem') {
-    // When there is more than one result, LibCat gives a completely different page display.
-    // We're capturing that display's elements here.
+    /*
+      When there is more than one result, LibCat gives a completely different page display.
+      We're capturing that display's elements here.
+    */
     const allItems = $('div.briefcitDetailMain')
     const items = allItems.slice(0, 5)
     const bundle = {
       total: makeMultiPageTotal($),
-      selection: []
+      selection: [],
+      worldcat: []
     }
     items.each((k, v) => {
       const title = $(v).find('h2.briefcitTitle a').text().trim()
@@ -48,8 +66,10 @@ function extract (html, currentUrl) {
     })
     return bundle
   } else if (pageType === 'singleItem') {
-    // When there is only one result, LibCat gives a completely different page display
-    // We're capturing that display's elements here.
+    /*
+      When there is only one result, LibCat gives a completely different page display
+      We're capturing that display's elements here.
+    */
     const bundle = {
       total: '1',
       selection: [
@@ -60,7 +80,8 @@ function extract (html, currentUrl) {
           url: encodeURI(currentUrl),
           image: $('.bibDisplayJacket a img').attr('src')
         }
-      ]
+      ],
+      worldcat: []
     }
     const allColumns = $('.bibInfoData')
     for (const c of allColumns) {
@@ -103,12 +124,23 @@ function makeMultiPageTotal ($) {
 }
 
 async function doWorldcatIfEmpty (bundle, searchTerm, searchType) {
-  // if bundle has any items, the bundle is fine & can be sent forward
-  // if (parseInt(bundle.total) > 0) {
-  //   return bundle
-  // }
-  const worldcatItems = await oclc.search(searchTerm, searchType)
-  return worldcatItems
+  /*
+    if bundle has any items, the bundle is fine & can be sent forward
+    otherwise, add worldcat results
+  */
+  if (parseInt(bundle.total) > 0) {
+    return bundle
+  }
+  const worldcat = await oclc.search(searchTerm, searchType)
+  bundle.worldcat = worldcat
+  return bundle
+}
+
+function format (bundle, searchTerm) {
+  return {
+    searchTerm,
+    ...bundle
+  }
 }
 
 module.exports.search = search
