@@ -45,13 +45,16 @@ async function makeTwoGoodItems (rss) {
     const parsed = {
       title: rssItem.title || '',
       author: '',
+      illiadUrl: '',
+      url: rssItem.link || '',
+      citation: '',
+      snippet: rssItem['content:encodedSnippet'] || '',
       isbn: '',
       oclc: rssItem['oclcterms:recordIdentifier'] || '',
       publisher: '',
       pubDate: '',
       resourceType: '',
-      illiadUrl: '',
-      worldcatUrl: rssItem.link || ''
+      image: ''
     }
 
     if (await locationIsNXW(parsed.oclc)) {
@@ -80,6 +83,7 @@ async function makeTwoGoodItems (rss) {
       parsed.publisher = extraParts.publisher || ''
       parsed.pubDate = extraParts.date || ''
       parsed.resourceType = extraParts.resourceType || ''
+      parsed.citation = extraParts.citation || ''
     }
 
     // make illiad url
@@ -117,7 +121,9 @@ function parseContentEncodedSnippet (text, title) {
   const textMinusResourceType = text.split(resourceType)[0]
   let date = textMinusResourceType.slice(posLastComma)
   const textMinusdate = textMinusResourceType.slice(0, posLastComma)
-  let publisher = textMinusdate.split(title)[1]
+  const posThirdLastPeriod = textMinusdate.lastIndexOf('.')
+  let publisher = textMinusdate.slice(posThirdLastPeriod + 1)
+
   if (publisher) {
     publisher = publisher.replace('.', '').trim()
   }
@@ -127,10 +133,25 @@ function parseContentEncodedSnippet (text, title) {
   if (resourceType) {
     resourceType = resourceType.replace('.', '').trim()
   }
+  let citation = ''
+  if (publisher) {
+    citation = `${publisher}`
+  }
+  if (date && citation) {
+    citation = `${citation} ${date}`
+  } else {
+    citation = `${date}`
+  }
+  if (resourceType && citation) {
+    citation = `${citation} ${resourceType}`
+  } else {
+    citation = `${resourceType}`
+  }
   return {
     publisher,
     date,
-    resourceType
+    resourceType,
+    citation
   }
 }
 
