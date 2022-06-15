@@ -17,6 +17,17 @@ const oclc = require('../api/requests/oclc')
 */
 
 async function search (searchTerm, searchType, next) {
+  if (!searchTerm.trim().length || !searchType.trim().length) {
+    const bundle = {
+      total: 0,
+      selection: [],
+      worldcat: []
+    }
+    return bundle
+  }
+
+  console.log(searchTerm, searchType)
+
   const url = makeURL(searchTerm, searchType)
   return await axios.get(url)
     .then(res => extract(res.data, url))
