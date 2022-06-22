@@ -87,7 +87,7 @@ async function makeTwoGoodItems (rss) {
     }
 
     // make illiad url
-    parsed.illiadUrl = encodeURI(`https://illiad.uncw.edu/illiad.dll?Action=10&Form=30&url_ver=Z39.88-2004&rfr_id=info:sid/BENTO&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&req_dat=<sessionid>&rfe_dat=<accessionnumber>${parsed.oclc}</accessionnumber>&rft_id=info:oclcnum/${parsed.oclc}&rft_id=urn:ISBN:${parsed.isbn}&rft.btitle=${parsed.title}&rft.date=${parsed.pubDate}&rft.au=${parsed.author}&rft.isbn=${parsed.isbn}&rft.genre=book&req_id=info:rfa/oclc/institutions/105484`)
+    parsed.illiadUrl = encodeURI(`https://liblink.uncw.edu/login?url=https://illiad.uncw.edu/illiad.dll?Action=10&Form=30&url_ver=Z39.88-2004&rfr_id=info:sid/BENTO&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&req_dat=<sessionid>&rfe_dat=<accessionnumber>${parsed.oclc}</accessionnumber>&rft_id=info:oclcnum/${parsed.oclc}&rft_id=urn:ISBN:${parsed.isbn}&rft.btitle=${parsed.title}&rft.date=${parsed.pubDate}&rft.au=${parsed.author}&rft.isbn=${parsed.isbn}&rft.genre=book&req_id=info:rfa/oclc/institutions/105484`)
 
     goodItems.push(parsed)
   }
