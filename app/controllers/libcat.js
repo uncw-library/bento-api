@@ -26,8 +26,6 @@ async function search (searchTerm, searchType, next) {
     return bundle
   }
 
-  console.log(searchTerm, searchType)
-
   const url = makeURL(searchTerm, searchType)
   return await axios.get(url)
     .then(res => extract(res.data, url))
@@ -142,6 +140,13 @@ async function doWorldcatIfEmpty (bundle, searchTerm, searchType) {
   if (parseInt(bundle.total) > 0) {
     return bundle
   }
+  /*
+    if bundle is govdocs searchType, then dont try a worldcat search.
+  */
+  if (searchType === 'govdocs') {
+    return bundle
+  }
+
   const worldcat = await oclc.search(searchTerm, searchType)
   bundle.worldcat = worldcat
   return bundle
