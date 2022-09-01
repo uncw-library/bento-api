@@ -2,9 +2,9 @@ version: '3.7'
 services:
   bento:
     build: .
-    platform: linux/x86_64/v8
-    image: libapps-admin.uncw.edu:8000/randall-dev/bento-api
     container_name: bento
+    image: libapps-admin.uncw.edu:8000/randall-dev/bento-api
+    platform: linux/x86_64/v8
     ports:
       - "8010:3000"
     env_file: .env
