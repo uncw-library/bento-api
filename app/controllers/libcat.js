@@ -16,7 +16,7 @@ const oclc = require('../api/requests/oclc')
   Maybe later sierra will make an API that gives this good data that we're having to scrape from the html.
 */
 
-async function search (searchTerm, searchType, next) {
+async function search(searchTerm, searchType, next) {
   if (!searchTerm.trim().length || !searchType.trim().length) {
     const bundle = {
       total: 0,
@@ -34,7 +34,7 @@ async function search (searchTerm, searchType, next) {
     .catch(next)
 }
 
-function makeURL (searchTerm, searchType) {
+function makeURL(searchTerm, searchType) {
   if (searchType === 'books-ebooks') {
     return `http://libcat.uncw.edu/search/X?SEARCH=(${searchTerm})&searchscope=4&SORT=D&m=a&m=c&m=h&b=wg&b=wj&b=wr&b=wf&b=wh&b=wb&b=wc&b=we&b=wi&b=wl&b=wn&b=ws&b=wu&b=wv&b=eb`
   } else if (searchType === 'govdocs') {
@@ -44,7 +44,7 @@ function makeURL (searchTerm, searchType) {
   }
 }
 
-function extract (html, currentUrl) {
+function extract(html, currentUrl) {
   // cheerio works like jQuery, for parsing an html structure
   const $ = cheerio.load(html)
   const pageType = whatPageType($)
@@ -71,7 +71,8 @@ function extract (html, currentUrl) {
       const citation = $(v).find('div.imprint').text().trim()
       const url = `https://libcat.uncw.edu${$('h2.briefcitTitle a', v).attr('href')}`
       const image = `${$(v).closest('tr').find('.briefcitJacket img').attr('src')}`
-      bundle.selection.push({ title, author, citation, url, image })
+      const ebookUrl = `${$(v).find('div.briefcitActions a').attr('href')}`
+      bundle.selection.push({ title, author, citation, url, image, ebookUrl })
     })
     return bundle
   } else if (pageType === 'singleItem') {
@@ -87,7 +88,8 @@ function extract (html, currentUrl) {
           author: '',
           citation: '',
           url: encodeURI(currentUrl),
-          image: $('.bibDisplayJacket a img').attr('src')
+          image: $('.bibDisplayJacket a img').attr('src'),
+          ebookUrl: ''
         }
       ],
       worldcat: []
@@ -112,11 +114,12 @@ function extract (html, currentUrl) {
         continue
       }
     }
+    bundle.selection[0].ebookUrl = `${$('table.bibLinks tbody tr td a').attr('href')}`
     return bundle
   }
 }
 
-function whatPageType ($) {
+function whatPageType($) {
   const elemOnlyOnSinglePage = $('.bibInfoData')
   if (elemOnlyOnSinglePage.length) {
     return 'singleItem'
@@ -124,7 +127,7 @@ function whatPageType ($) {
   return 'multiItem'
 }
 
-function makeMultiPageTotal ($) {
+function makeMultiPageTotal($) {
   const totalFullPage = $(' .browseHeaderData').text().split('of ').at(-1).trim().replace(')', '')
   if (totalFullPage !== '') {
     return totalFullPage
@@ -132,7 +135,7 @@ function makeMultiPageTotal ($) {
   return '0'
 }
 
-async function doWorldcatIfEmpty (bundle, searchTerm, searchType) {
+async function doWorldcatIfEmpty(bundle, searchTerm, searchType) {
   /*
     if bundle has any items, the bundle is fine & can be sent forward
     otherwise, add worldcat results
@@ -152,7 +155,7 @@ async function doWorldcatIfEmpty (bundle, searchTerm, searchType) {
   return bundle
 }
 
-function format (bundle, searchTerm) {
+function format(bundle, searchTerm) {
   return {
     searchTerm,
     ...bundle
