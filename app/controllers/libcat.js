@@ -71,7 +71,8 @@ function extract (html, currentUrl) {
       const citation = $(v).find('div.imprint').text().trim()
       const url = `https://libcat.uncw.edu${$('h2.briefcitTitle a', v).attr('href')}`
       const image = `${$(v).closest('tr').find('.briefcitJacket img').attr('src')}`
-      const itemUrl = `${$(v).find('div.briefcitActions a').attr('href')}`
+      let itemUrl = `${$(v).find('div.briefcitActions a').attr('href')}`
+      if (itemUrl === 'undefined') { itemUrl = '' }
       bundle.selection.push({ title, author, citation, url, image, itemUrl })
     })
     return bundle
@@ -115,6 +116,7 @@ function extract (html, currentUrl) {
       }
     }
     bundle.selection[0].itemUrl = `${$('table.bibLinks tbody tr td a').attr('href')}`
+    if (bundle.selection[0].itemUrl === 'undefined') { bundle.selection[0].itemUrl = '' }
     return bundle
   }
 }
